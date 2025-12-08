@@ -51,3 +51,12 @@ export interface BlogPost {
   tags: string[];
   content: string;
 }
+
+export interface ProfileData {
+  avatarUrl: string;
+  nameCN: string;
+  nameEN: string;
+  university: string;
+  gradYear: string;
+  roles: string[];
+}

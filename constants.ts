@@ -6,7 +6,22 @@ import {
   Terminal, 
   ShieldCheck 
 } from "lucide-react";
-import { ExperienceItem, LearningItem, SkillCategory, BookItem, BlogPost } from "./types";
+import { ExperienceItem, LearningItem, SkillCategory, BookItem, BlogPost, ProfileData } from "./types";
+
+export const PROFILE_DATA: ProfileData = {
+  // 您可以替换为您自己的头像 URL，或者使用这个默认的占位符
+  avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=JavaDev&backgroundColor=ffdfbf",
+  nameCN: "Java 架构师",
+  nameEN: "Java Architect",
+  university: "某知名理工大学 (University of Technology)",
+  gradYear: "2018 届毕业生",
+  roles: [
+    "资深 Java 后端开发 (Senior Backend Dev)",
+    "分布式系统架构师 (System Architect)",
+    "开源项目贡献者 (Open Source Contributor)",
+    "技术博主 (Tech Blogger)"
+  ]
+};
 
 export const HERO_CONTENT = {
   slogan: "构建高效可靠的分布式 Java 应用",
