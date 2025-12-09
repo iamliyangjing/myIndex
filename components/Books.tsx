@@ -2,7 +2,7 @@ import React from 'react';
 import Section from './Section';
 import { BOOKS_DATA } from '../constants';
 import { BookItem } from '../types';
-import { Book, CheckCircle2, Clock, Hourglass } from 'lucide-react';
+import { CheckCircle2, Clock, Hourglass, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -37,6 +37,144 @@ const StatusBadge: React.FC<{ status: BookItem['status'] }> = ({ status }) => {
   );
 };
 
+// 3D Book Component
+const ThreeDBook: React.FC<{ book: BookItem; index: number }> = ({ book, index }) => {
+  // Dimensions for the 3D construction
+  const width = 160;
+  const height = 240;
+  const depth = 35; // thickness
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1 }}
+      viewport={{ once: true }}
+      className="flex flex-col items-center"
+    >
+      <div 
+        className="relative group cursor-pointer mb-6"
+        style={{ width, height, perspective: '1000px' }}
+        onClick={() => window.open(book.link, '_blank')}
+      >
+        <div 
+          className="relative w-full h-full transition-all duration-500 ease-out preserve-3d group-hover:[transform:rotateY(-30deg)_rotateX(5deg)_translateZ(20px)_translateX(10px)]"
+          style={{ transformStyle: 'preserve-3d' }}
+        >
+          {/* Front Cover */}
+          <div 
+            className="absolute inset-0 z-10 rounded-r-sm shadow-xl"
+            style={{ 
+              transform: `translateZ(${depth / 2}px)`,
+              backgroundImage: `url(${book.coverImage})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          >
+            {/* Glossy overlay */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-black/10 to-white/20 rounded-r-sm pointer-events-none" />
+            
+            {/* Book crease/spine shadow on cover */}
+            <div className="absolute left-0 top-0 bottom-0 w-3 bg-gradient-to-r from-black/20 to-transparent pointer-events-none" />
+          </div>
+
+          {/* Back Cover */}
+          <div 
+            className="absolute inset-0 bg-slate-800 rounded-l-sm"
+            style={{ 
+              transform: `rotateY(180deg) translateZ(${depth / 2}px)`,
+              backgroundColor: book.coverColor 
+            }}
+          />
+
+          {/* Spine (Left) */}
+          <div 
+            className="absolute top-0 bottom-0 left-0 flex items-center justify-center overflow-hidden"
+            style={{ 
+              width: depth,
+              transform: `rotateY(-90deg) translateZ(${depth / 2}px)`,
+              backgroundColor: book.coverColor,
+              // Darken spine slightly for realism
+              filter: 'brightness(0.9)'
+            }}
+          >
+             {/* Spine Title (Rotated) */}
+             <div 
+                className="whitespace-nowrap text-white/90 text-[10px] font-bold tracking-wider"
+                style={{ transform: 'rotate(90deg)' }}
+             >
+                {book.title.length > 25 ? book.title.substring(0, 22) + '...' : book.title}
+             </div>
+          </div>
+
+          {/* Pages (Right) */}
+          <div 
+            className="absolute top-2 bottom-2 right-0 bg-white"
+            style={{ 
+              width: depth - 4, // slightly recessed
+              transform: `rotateY(90deg) translateZ(${width - (depth / 2) - 2}px)`,
+              background: 'linear-gradient(to right, #f1f5f9 0%, #fff 20%, #f1f5f9 40%, #fff 60%, #f1f5f9 80%, #fff 100%)'
+            }}
+          />
+          
+          {/* Pages (Top) */}
+          <div 
+            className="absolute top-0 right-0 left-0 bg-white"
+            style={{ 
+              height: depth - 4,
+              transform: `rotateX(90deg) translateZ(${depth/2 - 2}px) translateX(2px)`,
+              width: width - 4,
+              background: '#f8fafc'
+            }}
+          />
+          
+          {/* Pages (Bottom) */}
+           <div 
+            className="absolute bottom-0 right-0 left-0 bg-white shadow-inner"
+            style={{ 
+              height: depth - 4,
+              transform: `rotateX(-90deg) translateZ(${height - (depth/2) - 2}px) translateX(2px)`,
+              width: width - 4,
+              background: '#f8fafc'
+            }}
+          />
+        </div>
+        
+        {/* Shadow beneath the book */}
+        <div className="absolute bottom-0 left-4 right-4 h-4 bg-black/20 blur-xl rounded-[100%] transition-all duration-500 group-hover:scale-110 group-hover:opacity-40" />
+      </div>
+
+      {/* Book Metadata */}
+      <div className="text-center max-w-[200px]">
+        <div className="mb-2 flex justify-center">
+          <StatusBadge status={book.status} />
+        </div>
+        <h3 
+          className="font-bold text-slate-800 leading-tight mb-1 hover:text-primary cursor-pointer transition-colors"
+          onClick={() => window.open(book.link, '_blank')}
+        >
+          {book.title}
+        </h3>
+        <p className="text-sm text-slate-500 mb-2">{book.author}</p>
+        
+        <p className="text-xs text-slate-400 line-clamp-2 leading-relaxed">
+          {book.description}
+        </p>
+        
+        <a 
+          href={book.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center text-xs text-primary font-medium mt-2 hover:underline"
+        >
+          <ExternalLink className="w-3 h-3 mr-1" />
+          Details
+        </a>
+      </div>
+    </motion.div>
+  );
+};
+
 const Books: React.FC = () => {
   const { language, t } = useLanguage();
   const data = BOOKS_DATA[language];
@@ -50,72 +188,9 @@ const Books: React.FC = () => {
         "技术深度不仅来自代码实践，也来自经典书籍的系统化沉淀。"
       )}
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-8 justify-items-center mt-8">
         {data.map((book, index) => (
-          <motion.div 
-            key={index} 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.02, rotateX: 2, rotateY: 2 }}
-            className="group flex bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300"
-          >
-            {/* Simulated Book Spine/Cover */}
-            <div className={`w-24 md:w-32 flex-shrink-0 bg-gradient-to-br ${book.coverColor} flex items-center justify-center p-4 relative overflow-hidden`}>
-              <div className="absolute inset-0 bg-black/10"></div>
-              {/* Decorative line to look like a book spine */}
-              <div className="absolute left-2 top-0 bottom-0 w-1 bg-white/20"></div>
-              <motion.div
-                whileHover={{ rotate: 15 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <Book className="text-white/90 w-8 h-8 md:w-10 md:h-10 relative z-10" />
-              </motion.div>
-            </div>
-
-            <div className="p-5 md:p-6 flex flex-col justify-between w-full relative">
-              {/* Hover highlight */}
-              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-slate-100 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-bl-full pointer-events-none" />
-
-              <div>
-                <div className="flex justify-between items-start mb-2 relative z-10">
-                  <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">{book.category}</span>
-                  <StatusBadge status={book.status} />
-                </div>
-                
-                <h3 className="text-lg font-bold text-slate-900 mb-1 leading-snug group-hover:text-primary transition-colors relative z-10">
-                  {book.title}
-                </h3>
-                
-                <p className="text-slate-500 text-sm mb-3 relative z-10">
-                  {book.author}
-                </p>
-                
-                <p className="text-slate-600 text-sm leading-relaxed line-clamp-3 relative z-10">
-                  {book.description}
-                </p>
-              </div>
-
-              {/* Progress Indicator */}
-              {book.status === 'Reading' && (
-                <div className="mt-4 relative z-10">
-                  <div className="flex justify-between text-xs text-slate-500 mb-1">
-                    <span>{t("Progress", "阅读进度")}</span>
-                    <span>45%</span>
-                  </div>
-                  <div className="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
-                    <motion.div 
-                      className="bg-blue-500 h-1.5 rounded-full"
-                      initial={{ width: 0 }}
-                      whileInView={{ width: "45%" }}
-                      transition={{ duration: 1.5, ease: "easeOut" }}
-                    />
-                  </div>
-                </div>
-              )}
-            </div>
-          </motion.div>
+          <ThreeDBook key={index} book={book} index={index} />
         ))}
       </div>
     </Section>

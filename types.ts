@@ -32,7 +32,7 @@ export interface LearningItem {
   topic: string;
   description: string;
   category: string;
-}
+  }
 
 export interface BookItem {
   title: string;
@@ -41,6 +41,8 @@ export interface BookItem {
   status: 'Reading' | 'Finished' | 'To Read';
   description: string;
   coverColor: string;
+  coverImage: string;
+  link: string;
 }
 
 export interface BlogPost {

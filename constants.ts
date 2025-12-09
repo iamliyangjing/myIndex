@@ -270,70 +270,86 @@ export const LEARNING_DATA: LocalizedData<LearningItem[]> = {
 export const BOOKS_DATA: LocalizedData<BookItem[]> = {
   en: [
     {
+      title: "Effective Java (3rd Edition)",
+      author: "Joshua Bloch",
+      category: "Core Java",
+      status: "Finished",
+      description: "The definitive guide to writing clear, correct, and reusable code in Java.",
+      coverColor: "#2e7d32", // green-700
+      coverImage: "https://m.media-amazon.com/images/I/81adbNw2vlL._SL1500_.jpg",
+      link: "https://www.amazon.com/Effective-Java-Joshua-Bloch/dp/0134685997"
+    },
+    {
+      title: "Java Concurrency in Practice",
+      author: "Brian Goetz",
+      category: "Concurrency",
+      status: "Reading",
+      description: "Essential reading for writing thread-safe and scalable concurrent applications.",
+      coverColor: "#0f172a", // slate-900
+      coverImage: "https://m.media-amazon.com/images/I/81b+x+a+o4L._SL1500_.jpg",
+      link: "https://www.amazon.com/Java-Concurrency-Practice-Brian-Goetz/dp/0321349601"
+    },
+    {
       title: "Designing Data-Intensive Applications",
       author: "Martin Kleppmann",
       category: "Architecture",
-      status: "Reading",
-      description: "The 'Bible' of distributed systems. Deep understanding of replication, partitioning, and transactions.",
-      coverColor: "from-blue-600 to-indigo-700",
-    },
-    {
-      title: "Understanding the JVM",
-      author: "Zhou Zhiming",
-      category: "Java Core",
       status: "Finished",
-      description: "Mastering JVM memory management, garbage collection, and performance tuning.",
-      coverColor: "from-orange-500 to-red-600",
+      description: "The 'Bible' of distributed systems. Deep understanding of replication and transactions.",
+      coverColor: "#b91c1c", // red-700
+      coverImage: "https://m.media-amazon.com/images/I/91rr3BPljHL._SL1500_.jpg",
+      link: "https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321"
     },
     {
-      title: "Domain-Driven Design (DDD)",
+      title: "Domain-Driven Design",
       author: "Eric Evans",
-      category: "Methodology",
+      category: "Architecture",
       status: "To Read",
-      description: "Tackling complex logic by connecting the implementation to an evolving model.",
-      coverColor: "from-emerald-500 to-teal-700",
-    },
-    {
-      title: "Refactoring",
-      author: "Martin Fowler",
-      category: "Code Quality",
-      status: "Finished",
-      description: "Improving the design of existing code safely and systematically.",
-      coverColor: "from-purple-500 to-violet-700",
+      description: "Tackling complexity in the heart of software. The foundation of microservices.",
+      coverColor: "#1e3a8a", // blue-900
+      coverImage: "https://m.media-amazon.com/images/I/81j891A0u+L._SL1500_.jpg",
+      link: "https://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215"
     },
   ],
   cn: [
     {
+      title: "Effective Java 中文版 (第三版)",
+      author: "Joshua Bloch",
+      category: "Java 核心",
+      status: "Finished",
+      description: "编写清晰、正确且可重用 Java 代码的权威指南，Java 程序员必读。",
+      coverColor: "#2e7d32",
+      coverImage: "https://m.media-amazon.com/images/I/81adbNw2vlL._SL1500_.jpg",
+      link: "https://book.douban.com/subject/30412517/"
+    },
+    {
+      title: "Java 并发编程实战",
+      author: "Brian Goetz",
+      category: "并发编程",
+      status: "Reading",
+      description: "深入理解 Java 线程安全与高性能并发应用的必读经典。",
+      coverColor: "#0f172a",
+      coverImage: "https://m.media-amazon.com/images/I/81b+x+a+o4L._SL1500_.jpg",
+      link: "https://book.douban.com/subject/10484692/"
+    },
+    {
       title: "数据密集型应用系统设计",
       author: "Martin Kleppmann",
       category: "架构设计",
-      status: "Reading",
+      status: "Finished",
       description: "被誉为分布式系统的“圣经”，深入理解复制、分区和事务的底层原理。",
-      coverColor: "from-blue-600 to-indigo-700",
+      coverColor: "#b91c1c",
+      coverImage: "https://m.media-amazon.com/images/I/91rr3BPljHL._SL1500_.jpg",
+      link: "https://book.douban.com/subject/30329536/"
     },
     {
-      title: "深入理解 Java 虚拟机",
-      author: "周志明",
-      category: "Java 核心",
-      status: "Finished",
-      description: "Java 开发者必读经典，系统掌握 JVM 内存管理、垃圾收集与性能调优。",
-      coverColor: "from-orange-500 to-red-600",
-    },
-    {
-      title: "领域驱动设计 (DDD)",
+      title: "领域驱动设计",
       author: "Eric Evans",
-      category: "方法论",
+      category: "架构方法论",
       status: "To Read",
-      description: "学习如何处理复杂业务逻辑，构建高内聚低耦合的领域模型，打破技术与业务的壁垒。",
-      coverColor: "from-emerald-500 to-teal-700",
-    },
-    {
-      title: "重构：改善既有代码的设计",
-      author: "Martin Fowler",
-      category: "代码质量",
-      status: "Finished",
-      description: "培养良好的代码嗅觉，掌握安全重构遗留系统的系统化方法。",
-      coverColor: "from-purple-500 to-violet-700",
+      description: "软件核心复杂性应对之道，现代微服务架构设计的理论基石。",
+      coverColor: "#1e3a8a",
+      coverImage: "https://m.media-amazon.com/images/I/81j891A0u+L._SL1500_.jpg",
+      link: "https://book.douban.com/subject/26819666/"
     },
   ]
 };
