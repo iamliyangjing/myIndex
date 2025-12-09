@@ -28,8 +28,8 @@ const Navbar: React.FC = () => {
   const navLinks = [
     { label: t('Skills', '技术栈'), id: 'skills', type: 'internal' },
     { label: t('Experience', '工作经历'), id: 'experience', type: 'internal' },
-    { label: t('Learning', '正在学习'), id: 'learning', type: 'internal' },
-    { label: t('Reading List', '阅读书单'), id: 'books', type: 'internal' },
+    { label: t('Reading', '书单'), id: 'books', type: 'internal' },
+    { label: t('Space', '足迹'), id: 'space', type: 'internal' },
     { label: t('Blog', '博客'), url: BLOG_URL, type: 'external' },
   ];
 

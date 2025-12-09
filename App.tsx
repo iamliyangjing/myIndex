@@ -5,7 +5,9 @@ import Skills from './components/Skills';
 import Experience from './components/Experience';
 import Learning from './components/Learning';
 import Books from './components/Books';
+import Space from './components/Space';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import { LanguageProvider } from './contexts/LanguageContext';
 
 function App() {
@@ -19,8 +21,10 @@ function App() {
           <Experience />
           <Learning />
           <Books />
+          <Space />
         </main>
         <Footer />
+        <ScrollToTop />
       </div>
     </LanguageProvider>
   );

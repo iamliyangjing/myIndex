@@ -7,14 +7,23 @@ import {
   Cloud, 
   Code2, 
   Globe, 
-  GraduationCap
+  GraduationCap,
+  Download
 } from 'lucide-react';
-import { PROFILE_DATA } from '../constants';
+import { PROFILE_DATA, HERO_CONTENT } from '../constants';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Hero: React.FC = () => {
   const { language, t } = useLanguage();
   const profile = PROFILE_DATA[language];
+  const content = HERO_CONTENT[language];
+
+  const scrollToSkills = () => {
+    const element = document.getElementById('skills');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   // Orbital animations config
   const orbitalIcons = [
@@ -26,10 +35,10 @@ const Hero: React.FC = () => {
   ];
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center bg-slate-50 overflow-hidden pt-16">
+    <div className="relative min-h-screen flex items-center justify-center bg-slate-50 overflow-hidden pt-16 print:pt-4 print:min-h-0 print:block print:h-auto">
       
-      {/* Dynamic Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Dynamic Background Elements - Hidden in Print */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none print:hidden">
         {/* Large faint gradient blob */}
         <div className="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-blue-100 rounded-full mix-blend-multiply filter blur-[80px] opacity-70 animate-blob" />
         <div 
@@ -73,21 +82,22 @@ const Hero: React.FC = () => {
         initial={{ opacity: 0, y: 30, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
-        className="relative z-10 w-full max-w-md mx-auto px-6"
+        className="relative z-10 w-full max-w-md mx-auto px-6 print:max-w-none print:px-0 print:shadow-none"
       >
-        <div className="relative bg-white/80 backdrop-blur-xl rounded-[2rem] shadow-2xl border border-white/50 p-8 text-center">
+        <div className="relative bg-white/80 backdrop-blur-xl rounded-[2rem] shadow-2xl border border-white/50 p-8 text-center print:bg-transparent print:shadow-none print:border-none print:p-0">
           
           {/* Avatar Section */}
-          <div className="absolute -top-16 left-1/2 transform -translate-x-1/2">
-            <div className="relative w-32 h-32">
+          <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 print:relative print:top-auto print:left-auto print:translate-x-0 print:mx-auto print:mb-4">
+            <div className="relative w-32 h-32 print:w-24 print:h-24">
                {/* Decorative Circle behind avatar */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-orange-400 to-yellow-300 blur-sm transform scale-105" />
+              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-orange-400 to-yellow-300 blur-sm transform scale-105 print:hidden" />
               
               {/* Spinning Avatar Container */}
               <motion.div 
                 className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg bg-white relative z-10"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                style={{ rotate: 0 }} // Reset rotation for print via CSS if needed, but Framer might inline style.
               >
                 <img 
                   src={profile.avatarUrl} 
@@ -96,51 +106,72 @@ const Hero: React.FC = () => {
                 />
               </motion.div>
               
-              <div className="absolute bottom-1 right-1 z-20 bg-blue-500 text-white p-1 rounded-full border-2 border-white">
+              <div className="absolute bottom-1 right-1 z-20 bg-blue-500 text-white p-1 rounded-full border-2 border-white print:hidden">
                 <Code2 className="w-4 h-4" />
               </div>
             </div>
           </div>
 
-          <div className="mt-16">
-            <div className="flex items-center justify-center space-x-2 text-slate-500 text-sm font-medium mb-1">
+          <div className="mt-16 print:mt-0">
+            <div className="flex items-center justify-center space-x-2 text-slate-500 text-sm font-medium mb-1 print:hidden">
               <span>{t("Hello, I'm:", "你好，我是：")}</span>
             </div>
             
             {/* Name */}
-            <div className="mb-6">
+            <div className="mb-2">
               <motion.h1 
                 key={language} // Animate when language changes
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-4xl md:text-5xl font-black bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-amber-600 pb-2"
+                className="text-4xl md:text-5xl font-black bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-amber-600 pb-2 print:text-black print:bg-none print:text-3xl"
               >
                 {profile.name}
               </motion.h1>
             </div>
 
-            <hr className="border-slate-100 w-1/2 mx-auto mb-6" />
+            <p className="text-xl text-slate-700 font-semibold mb-2">{content.role}</p>
+            <p className="text-sm text-slate-500 mb-6 print:mb-4">{content.subRole}</p>
 
-            <div className="text-left space-y-4">
+            <hr className="border-slate-100 w-1/2 mx-auto mb-6 print:hidden" />
+
+            {/* Buttons Row */}
+            <div className="flex flex-wrap gap-4 justify-center mb-8 print:hidden">
+              <button
+                onClick={scrollToSkills}
+                className="px-6 py-2.5 bg-primary text-white rounded-full font-semibold shadow-lg shadow-primary/30 hover:bg-primary-dark hover:scale-105 transition-all active:scale-95"
+              >
+                {content.ctaText}
+              </button>
+              
+              <button
+                onClick={() => window.alert("Resume download simulation")} 
+                className="px-6 py-2.5 bg-white text-slate-700 border border-slate-200 rounded-full font-semibold shadow-sm hover:bg-slate-50 hover:border-slate-300 hover:scale-105 transition-all active:scale-95 flex items-center gap-2"
+              >
+                <Download className="w-4 h-4" />
+                {content.downloadText}
+              </button>
+            </div>
+
+            <div className="text-left space-y-4 print:space-y-2">
                {/* Graduation Info */}
-              <div className="flex items-start text-slate-600 bg-slate-50 p-3 rounded-xl">
-                 <div className="p-2 bg-white rounded-lg shadow-sm mr-3">
+              <div className="flex items-start text-slate-600 bg-slate-50 p-3 rounded-xl print:bg-transparent print:p-0 print:border print:border-slate-200">
+                 <div className="p-2 bg-white rounded-lg shadow-sm mr-3 print:hidden">
                     <GraduationCap className="w-5 h-5 text-blue-500" />
                  </div>
                  <div>
-                    <p className="text-xs text-slate-400 font-semibold uppercase tracking-wider">{t("Education", "教育背景")}</p>
+                    <p className="text-xs text-slate-400 font-semibold uppercase tracking-wider print:text-black">{t("Education", "教育背景")}</p>
                     <p className="font-bold text-slate-800">{profile.university}</p>
                     <p className="text-sm text-slate-500">{profile.gradYear}</p>
                  </div>
               </div>
 
               {/* Roles List */}
-              <div className="bg-slate-50 p-4 rounded-xl">
-                <div className="flex items-center mb-3">
+              <div className="bg-slate-50 p-4 rounded-xl print:bg-transparent print:p-0">
+                <div className="flex items-center mb-3 print:hidden">
                   <Globe className="w-4 h-4 text-slate-400 mr-2" />
                   <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider">{t("My Roles", "我的角色")}</span>
                 </div>
-                <ul className="space-y-2">
+                <ul className="space-y-2 print:grid print:grid-cols-2 print:gap-2">
                   {profile.roles.map((role, idx) => (
                     <motion.li 
                       key={`${language}-${idx}`}
@@ -149,7 +180,7 @@ const Hero: React.FC = () => {
                       transition={{ delay: 0.1 + (idx * 0.1) }}
                       className="text-slate-700 font-medium flex items-center"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-orange-400 mr-3" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-orange-400 mr-3 print:bg-black" />
                       {role}
                     </motion.li>
                   ))}

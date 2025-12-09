@@ -6,7 +6,7 @@ import {
   Terminal, 
   ShieldCheck 
 } from "lucide-react";
-import { ExperienceItem, LearningItem, SkillCategory, BookItem, LocalizedData, ProfileData, HeroContent, FooterContent, BlogPost } from "./types";
+import { ExperienceItem, LearningItem, SkillCategory, BookItem, LocalizedData, ProfileData, HeroContent, FooterContent, BlogPost, SpaceContent, MapLocation } from "./types";
 
 // Profile Data
 export const PROFILE_DATA: LocalizedData<ProfileData> = {
@@ -43,12 +43,14 @@ export const HERO_CONTENT: LocalizedData<HeroContent> = {
     role: "Java Backend Engineer",
     subRole: "Specializing in Spring Boot/Cloud and High Performance Computing",
     ctaText: "View Skills",
+    downloadText: "Download Resume",
   },
   cn: {
     slogan: "构建高效可靠的分布式 Java 应用",
     role: "Java 后端开发工程师",
     subRole: "专注于 Spring Boot/Cloud 和 高性能系统",
     ctaText: "查看技术栈",
+    downloadText: "下载简历",
   }
 };
 
@@ -393,6 +395,36 @@ Nacos 同时支持基于 DNS 和基于 RPC 的服务发现。它还提供实时�
     `
   }
 ];
+
+// Locations
+const COMMON_LOCATIONS: MapLocation[] = [
+  { name: "Chengdu", lat: 30.5728, lng: 104.0668, type: "current" },
+  { name: "Suzhou", lat: 31.2989, lng: 120.5853, type: "visited" },
+  { name: "Shanghai", lat: 31.2304, lng: 121.4737, type: "visited" },
+  { name: "Beijing", lat: 39.9042, lng: 116.4074, type: "visited" },
+  { name: "Hangzhou", lat: 30.2741, lng: 120.1551, type: "visited" },
+  { name: "Shenzhen", lat: 22.5431, lng: 114.0579, type: "visited" },
+  { name: "Tokyo", lat: 35.6762, lng: 139.6503, type: "visited" },
+  { name: "Osaka", lat: 34.6937, lng: 135.5023, type: "visited" },
+  { name: "Seoul", lat: 37.5665, lng: 126.9780, type: "visited" },
+  { name: "Bangkok", lat: 13.7563, lng: 100.5018, type: "visited" },
+  { name: "Singapore", lat: 1.3521, lng: 103.8198, type: "visited" },
+];
+
+export const SPACE_DATA: LocalizedData<SpaceContent> = {
+  en: {
+    title: "Space",
+    subtitle: "This is my travel footprint. And currently I'm living in Chengdu, China.",
+    currentLocationText: "Chengdu, China",
+    locations: COMMON_LOCATIONS,
+  },
+  cn: {
+    title: "足迹",
+    subtitle: "这是我的旅行足迹。目前我居住在中国成都。",
+    currentLocationText: "中国，成都",
+    locations: COMMON_LOCATIONS,
+  }
+};
 
 // Footer
 export const FOOTER_CONTENT: LocalizedData<FooterContent> = {

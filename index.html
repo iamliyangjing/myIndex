@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script>
       tailwind.config = {
         theme: {
@@ -31,6 +32,7 @@
             animation: {
               'border-beam': 'border-beam calc(var(--duration)*1s) infinite linear',
               'shine': 'shine 2s linear infinite',
+              'blob': 'blob 7s infinite',
             },
             keyframes: {
               'border-beam': {
@@ -41,7 +43,21 @@
               'shine': {
                 'from': { 'background-position': '0 0' },
                 'to': { 'background-position': '-200% 0' }
-              }
+              },
+              blob: {
+                "0%": {
+                  transform: "translate(0px, 0px) scale(1)",
+                },
+                "33%": {
+                  transform: "translate(30px, -50px) scale(1.1)",
+                },
+                "66%": {
+                  transform: "translate(-20px, 20px) scale(0.9)",
+                },
+                "100%": {
+                  transform: "translate(0px, 0px) scale(1)",
+                },
+              },
             },
           }
         }
@@ -78,6 +94,45 @@
       .markdown-body blockquote { border-left: 4px solid #3b82f6; padding-left: 1em; margin-left: 0; margin-right: 0; color: #475569; font-style: italic; background: #f8fafc; padding: 1em; border-radius: 0 0.5em 0.5em 0; }
       .markdown-body a { color: #2563eb; text-decoration: underline; text-underline-offset: 4px; }
       .markdown-body a:hover { color: #1d4ed8; }
+
+      /* Map Styles */
+      .leaflet-container {
+        font-family: 'Inter', sans-serif;
+        background: #f8fafc !important;
+      }
+      .custom-div-icon {
+        background: transparent;
+        border: none;
+      }
+      .pulse-ring {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: rgba(249, 115, 22, 0.4);
+        animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+      }
+      @keyframes pulse-ring {
+        0% { transform: scale(0.8); opacity: 1; }
+        100% { transform: scale(2.5); opacity: 0; }
+      }
+
+      /* Print Optimization Styles */
+      @media print {
+        @page { margin: 1cm; size: auto; }
+        body { background: white; color: black; -webkit-print-color-adjust: exact; }
+        nav, footer, #space, button, .no-print { display: none !important; }
+        section { padding: 2rem 0 !important; break-inside: avoid; }
+        h1, h2, h3 { color: black !important; page-break-after: avoid; }
+        p, li { color: #333 !important; }
+        a { text-decoration: none !important; color: black !important; }
+        .shadow-lg, .shadow-xl, .shadow-2xl { box-shadow: none !important; }
+        .bg-slate-50, .bg-slate-900 { background: white !important; }
+        /* Ensure text contrast in print */
+        .text-slate-300, .text-slate-400, .text-slate-500 { color: #555 !important; }
+        /* Expand content to full width */
+        .max-w-7xl, .max-w-md { max-width: 100% !important; }
+      }
     </style>
   <script type="importmap">
 {
@@ -89,7 +144,8 @@
     "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
     "lucide-react": "https://esm.sh/lucide-react@0.263.1?deps=react@18.2.0",
     "framer-motion": "https://esm.sh/framer-motion@10.16.4?deps=react@18.2.0,react-dom@18.2.0",
-    "react-markdown": "https://esm.sh/react-markdown@9.0.1?deps=react@18.2.0,react-dom@18.2.0"
+    "react-markdown": "https://esm.sh/react-markdown@9.0.1?deps=react@18.2.0,react-dom@18.2.0",
+    "leaflet": "https://esm.sh/leaflet@1.9.4"
   }
 }
 </script>

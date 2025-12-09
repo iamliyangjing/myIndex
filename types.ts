@@ -65,6 +65,7 @@ export interface HeroContent {
   role: string;
   subRole: string;
   ctaText: string;
+  downloadText: string;
 }
 
 export interface FooterContent {
@@ -72,6 +73,20 @@ export interface FooterContent {
   emailText: string;
   copyright: string;
   builtWith: string;
+}
+
+export interface MapLocation {
+  name: string;
+  lat: number;
+  lng: number;
+  type: 'visited' | 'current';
+}
+
+export interface SpaceContent {
+  title: string;
+  subtitle: string;
+  currentLocationText: string;
+  locations: MapLocation[];
 }
 
 // Container for bilingual data
