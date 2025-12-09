@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Code2, Menu, X, ExternalLink } from 'lucide-react';
+import { Code2, Menu, X, ExternalLink, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BLOG_URL } from '../constants';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { language, toggleLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,11 +26,11 @@ const Navbar: React.FC = () => {
   };
 
   const navLinks = [
-    { label: '技术栈', id: 'skills', type: 'internal' },
-    { label: '工作经历', id: 'experience', type: 'internal' },
-    { label: '正在学习', id: 'learning', type: 'internal' },
-    { label: '阅读书单', id: 'books', type: 'internal' },
-    { label: '博客', url: BLOG_URL, type: 'external' },
+    { label: t('Skills', '技术栈'), id: 'skills', type: 'internal' },
+    { label: t('Experience', '工作经历'), id: 'experience', type: 'internal' },
+    { label: t('Learning', '正在学习'), id: 'learning', type: 'internal' },
+    { label: t('Reading List', '阅读书单'), id: 'books', type: 'internal' },
+    { label: t('Blog', '博客'), url: BLOG_URL, type: 'external' },
   ];
 
   return (
@@ -79,6 +81,20 @@ const Navbar: React.FC = () => {
               )}
             </React.Fragment>
           ))}
+          
+          {/* Language Toggle */}
+          <button
+            onClick={toggleLanguage}
+            className={`flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full border transition-all ${
+              isScrolled 
+                ? 'border-slate-200 text-slate-600 hover:border-slate-400' 
+                : 'border-white/20 text-white/80 hover:bg-white/10'
+            }`}
+          >
+            <Globe className="w-3 h-3" />
+            {language === 'en' ? 'EN' : 'CN'}
+          </button>
+
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -89,12 +105,23 @@ const Navbar: React.FC = () => {
                 : 'bg-white text-slate-900 hover:bg-slate-100'
             }`}
           >
-            联系我
+            {t('Contact Me', '联系我')}
           </motion.a>
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center gap-4">
+          <button
+            onClick={toggleLanguage}
+            className={`flex items-center gap-1 text-xs font-bold px-2 py-1 rounded border transition-all ${
+              isScrolled 
+                ? 'border-slate-200 text-slate-600' 
+                : 'border-white/20 text-white/80'
+            }`}
+          >
+            {language === 'en' ? 'EN' : 'CN'}
+          </button>
+          
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className={`p-2 rounded-md ${isScrolled ? 'text-slate-900' : 'text-white'}`}
@@ -141,7 +168,7 @@ const Navbar: React.FC = () => {
                 href="mailto:developer@example.com"
                 className="text-center w-full py-3 bg-slate-900 text-white rounded-lg font-semibold"
               >
-                联系我
+                {t('Contact Me', '联系我')}
               </a>
             </div>
           </motion.div>

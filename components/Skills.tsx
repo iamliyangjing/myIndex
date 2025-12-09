@@ -3,6 +3,7 @@ import Section from './Section';
 import { SKILL_CATEGORIES } from '../constants';
 import { SkillCategory, SkillItem } from '../types';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const SkillCard: React.FC<{ category: SkillCategory; index: number }> = ({ category, index }) => {
   const Icon = category.icon;
@@ -15,7 +16,6 @@ const SkillCard: React.FC<{ category: SkillCategory; index: number }> = ({ categ
       viewport={{ once: true }}
       className="bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group relative overflow-hidden"
     >
-      {/* Magic Hover Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary-light/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
       <div className="flex items-center mb-6 relative z-10">
@@ -49,15 +49,21 @@ const SkillCard: React.FC<{ category: SkillCategory; index: number }> = ({ categ
 };
 
 const Skills: React.FC = () => {
+  const { language, t } = useLanguage();
+  const categories = SKILL_CATEGORIES[language];
+
   return (
     <Section 
       id="skills" 
-      title="技术栈 & 核心能力" 
-      subtitle="构建高可用、高性能分布式系统的全面技术储备。"
+      title={t("Tech Stack & Skills", "技术栈 & 核心能力")}
+      subtitle={t(
+        "A comprehensive technical reserve for building high-availability, high-performance distributed systems.",
+        "构建高可用、高性能分布式系统的全面技术储备。"
+      )}
       lightBackground
     >
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {SKILL_CATEGORIES.map((category, index) => (
+        {categories.map((category, index) => (
           <SkillCard key={category.title} category={category} index={index} />
         ))}
       </div>

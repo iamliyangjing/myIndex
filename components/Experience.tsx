@@ -4,8 +4,11 @@ import { EXPERIENCE_DATA } from '../constants';
 import { Calendar, CheckCircle, GitBranch } from 'lucide-react';
 import { ExperienceItem } from '../types';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const ExperienceCard: React.FC<{ item: ExperienceItem; index: number }> = ({ item, index }) => {
+  const { t } = useLanguage();
+
   return (
     <motion.div 
       initial={{ opacity: 0, x: -20 }}
@@ -14,7 +17,6 @@ const ExperienceCard: React.FC<{ item: ExperienceItem; index: number }> = ({ ite
       viewport={{ once: true }}
       className="relative pl-8 md:pl-0"
     >
-      {/* Timeline Layout for Desktop */}
       <div className="md:flex items-start justify-between group">
         
         {/* Left Side: Time & Company (Desktop) */}
@@ -27,7 +29,7 @@ const ExperienceCard: React.FC<{ item: ExperienceItem; index: number }> = ({ ite
           <p className="text-slate-500 font-medium">{item.role}</p>
         </div>
 
-        {/* Timeline Center Line marker */}
+        {/* Timeline Center Line */}
         <div className="absolute left-0 md:left-1/3 top-0 md:transform md:-translate-x-1/2 flex flex-col items-center h-full">
           <motion.div 
             initial={{ scale: 0 }}
@@ -40,7 +42,6 @@ const ExperienceCard: React.FC<{ item: ExperienceItem; index: number }> = ({ ite
 
         {/* Right Side: Details */}
         <div className="md:w-2/3 md:pl-12 pb-16">
-          {/* Mobile Only Header */}
           <div className="md:hidden mb-4">
             <span className="text-sm font-bold text-primary-light uppercase tracking-wider mb-1 block">{item.period}</span>
             <h3 className="text-xl font-bold text-slate-900">{item.company}</h3>
@@ -78,7 +79,7 @@ const ExperienceCard: React.FC<{ item: ExperienceItem; index: number }> = ({ ite
                     </h4>
                     {project.link && (
                       <a href={project.link} className="text-sm text-primary-light hover:underline">
-                        查看代码
+                        {t('View Code', '查看代码')}
                       </a>
                     )}
                   </div>
@@ -101,14 +102,20 @@ const ExperienceCard: React.FC<{ item: ExperienceItem; index: number }> = ({ ite
 };
 
 const Experience: React.FC = () => {
+  const { language, t } = useLanguage();
+  const data = EXPERIENCE_DATA[language];
+
   return (
     <Section 
       id="experience" 
-      title="工作经历 & 项目"
-      subtitle="解决复杂业务问题与交付高健壮性系统的实战记录。"
+      title={t("Experience & Projects", "工作经历 & 项目")}
+      subtitle={t(
+        "A track record of solving complex business problems and delivering robust systems.",
+        "解决复杂业务问题与交付高健壮性系统的实战记录。"
+      )}
     >
       <div className="relative mt-12">
-        {EXPERIENCE_DATA.map((item, index) => (
+        {data.map((item, index) => (
           <ExperienceCard key={item.id} item={item} index={index} />
         ))}
       </div>

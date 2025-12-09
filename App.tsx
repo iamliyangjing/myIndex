@@ -6,20 +6,23 @@ import Experience from './components/Experience';
 import Learning from './components/Learning';
 import Books from './components/Books';
 import Footer from './components/Footer';
+import { LanguageProvider } from './contexts/LanguageContext';
 
 function App() {
   return (
-    <div className="min-h-screen bg-slate-50 font-sans selection:bg-primary-light selection:text-white">
-      <Navbar />
-      <main>
-        <Hero />
-        <Skills />
-        <Experience />
-        <Learning />
-        <Books />
-      </main>
-      <Footer />
-    </div>
+    <LanguageProvider>
+      <div className="min-h-screen bg-slate-50 font-sans selection:bg-primary-light selection:text-white">
+        <Navbar />
+        <main>
+          <Hero />
+          <Skills />
+          <Experience />
+          <Learning />
+          <Books />
+        </main>
+        <Footer />
+      </div>
+    </LanguageProvider>
   );
 }
 

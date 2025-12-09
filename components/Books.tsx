@@ -4,22 +4,25 @@ import { BOOKS_DATA } from '../constants';
 import { BookItem } from '../types';
 import { Book, CheckCircle2, Clock, Hourglass } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const StatusBadge: React.FC<{ status: BookItem['status'] }> = ({ status }) => {
+  const { t } = useLanguage();
+
   const config = {
     'Reading': { 
       icon: Clock, 
-      text: '阅读中', 
+      text: t('Reading', '阅读中'), 
       classes: 'bg-blue-100 text-blue-700 border-blue-200' 
     },
     'Finished': { 
       icon: CheckCircle2, 
-      text: '已读完', 
+      text: t('Finished', '已读完'), 
       classes: 'bg-emerald-100 text-emerald-700 border-emerald-200' 
     },
     'To Read': { 
       icon: Hourglass, 
-      text: '想读', 
+      text: t('To Read', '想读'), 
       classes: 'bg-slate-100 text-slate-600 border-slate-200' 
     },
   };
@@ -35,14 +38,20 @@ const StatusBadge: React.FC<{ status: BookItem['status'] }> = ({ status }) => {
 };
 
 const Books: React.FC = () => {
+  const { language, t } = useLanguage();
+  const data = BOOKS_DATA[language];
+
   return (
     <Section 
       id="books" 
-      title="阅读书单" 
-      subtitle="技术深度不仅来自代码实践，也来自经典书籍的系统化沉淀。"
+      title={t("Reading List", "阅读书单")}
+      subtitle={t(
+        "Technical depth comes from both coding practice and systematic reading.",
+        "技术深度不仅来自代码实践，也来自经典书籍的系统化沉淀。"
+      )}
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {BOOKS_DATA.map((book, index) => (
+        {data.map((book, index) => (
           <motion.div 
             key={index} 
             initial={{ opacity: 0, y: 30 }}
@@ -92,7 +101,7 @@ const Books: React.FC = () => {
               {book.status === 'Reading' && (
                 <div className="mt-4 relative z-10">
                   <div className="flex justify-between text-xs text-slate-500 mb-1">
-                    <span>阅读进度</span>
+                    <span>{t("Progress", "阅读进度")}</span>
                     <span>45%</span>
                   </div>
                   <div className="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">

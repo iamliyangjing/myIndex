@@ -3,26 +3,32 @@ import Section from './Section';
 import { LEARNING_DATA } from '../constants';
 import { BookOpen, Cpu, Layers } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Learning: React.FC = () => {
+  const { language, t } = useLanguage();
+  const data = LEARNING_DATA[language];
+
+  // Simple category mapping for icons (could be improved with explicit icon mapping in data)
   const getIcon = (category: string) => {
-    switch(category) {
-      case '编程语言': return <BookOpen className="w-5 h-5 text-accent-orange" />;
-      case '云原生平台': return <Layers className="w-5 h-5 text-primary-light" />;
-      case '核心原理': return <Cpu className="w-5 h-5 text-accent-green" />;
-      default: return <BookOpen className="w-5 h-5 text-slate-400" />;
-    }
+    if (category.includes('Language') || category.includes('语言')) return <BookOpen className="w-5 h-5 text-accent-orange" />;
+    if (category.includes('Cloud') || category.includes('平台')) return <Layers className="w-5 h-5 text-primary-light" />;
+    if (category.includes('Core') || category.includes('原理')) return <Cpu className="w-5 h-5 text-accent-green" />;
+    return <BookOpen className="w-5 h-5 text-slate-400" />;
   };
 
   return (
     <Section 
       id="learning" 
-      title="持续学习" 
-      subtitle="保持对前沿技术的敏锐度，持续深耕底层原理。"
+      title={t("Currently Learning", "持续学习")}
+      subtitle={t(
+        "Staying sharp with cutting-edge technologies and deep diving into core principles.",
+        "保持对前沿技术的敏锐度，持续深耕底层原理。"
+      )}
       lightBackground
     >
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {LEARNING_DATA.map((item, index) => (
+        {data.map((item, index) => (
           <motion.div 
             key={index} 
             initial={{ opacity: 0, scale: 0.9 }}

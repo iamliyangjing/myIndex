@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   Coffee, 
@@ -7,21 +7,16 @@ import {
   Cloud, 
   Code2, 
   Globe, 
-  GraduationCap,
-  Languages,
-  RotateCcw
+  GraduationCap
 } from 'lucide-react';
 import { PROFILE_DATA } from '../constants';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Hero: React.FC = () => {
-  const [isEnglish, setIsEnglish] = useState(false);
+  const { language, t } = useLanguage();
+  const profile = PROFILE_DATA[language];
 
-  const toggleLanguage = () => setIsEnglish(!isEnglish);
-
-  const roles = PROFILE_DATA.roles;
-
-  // Background floating icons
-  // Increased radius values for larger orbits
+  // Orbital animations config
   const orbitalIcons = [
     { icon: Coffee, color: "text-orange-500", delay: 0, radius: 200, duration: 25 },
     { icon: Server, color: "text-blue-500", delay: 5, radius: 270, duration: 30 },
@@ -42,7 +37,7 @@ const Hero: React.FC = () => {
           style={{ animationDelay: '2s' }}
         />
         
-        {/* Orbital Rings (SVG) - Increased size to 1200px */}
+        {/* Orbital Rings (SVG) */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] opacity-20">
           <svg viewBox="0 0 1200 1200" className="w-full h-full animate-[spin_60s_linear_infinite]">
             <circle cx="600" cy="600" r="200" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="8 8" className="text-slate-400" />
@@ -82,7 +77,7 @@ const Hero: React.FC = () => {
       >
         <div className="relative bg-white/80 backdrop-blur-xl rounded-[2rem] shadow-2xl border border-white/50 p-8 text-center">
           
-          {/* Avatar Section - Breaking out of the card */}
+          {/* Avatar Section */}
           <div className="absolute -top-16 left-1/2 transform -translate-x-1/2">
             <div className="relative w-32 h-32">
                {/* Decorative Circle behind avatar */}
@@ -95,13 +90,12 @@ const Hero: React.FC = () => {
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               >
                 <img 
-                  src={PROFILE_DATA.avatarUrl} 
+                  src={profile.avatarUrl} 
                   alt="Profile" 
                   className="w-full h-full object-cover"
                 />
               </motion.div>
               
-              {/* Verified Badge (Optional decoration) */}
               <div className="absolute bottom-1 right-1 z-20 bg-blue-500 text-white p-1 rounded-full border-2 border-white">
                 <Code2 className="w-4 h-4" />
               </div>
@@ -110,29 +104,19 @@ const Hero: React.FC = () => {
 
           <div className="mt-16">
             <div className="flex items-center justify-center space-x-2 text-slate-500 text-sm font-medium mb-1">
-              <span>My name is:</span>
+              <span>{t("Hello, I'm:", "你好，我是：")}</span>
             </div>
             
-            {/* Name with Toggle */}
-            <div className="relative inline-block mb-6 group">
+            {/* Name */}
+            <div className="mb-6">
               <motion.h1 
-                key={isEnglish ? 'en' : 'cn'}
+                key={language} // Animate when language changes
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="text-4xl md:text-5xl font-black bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-amber-600 pb-2"
-                style={{ fontFamily: isEnglish ? '"Inter", sans-serif' : '"Inter", sans-serif' }} // Adjust font if needed
               >
-                {isEnglish ? PROFILE_DATA.nameEN : PROFILE_DATA.nameCN}
+                {profile.name}
               </motion.h1>
-              
-              {/* Language Switcher */}
-              <button 
-                onClick={toggleLanguage}
-                className="absolute -right-8 top-1/2 -translate-y-1/2 p-1.5 text-slate-400 hover:text-primary transition-colors rounded-full hover:bg-slate-100"
-                title="Switch Language / 切换语言"
-              >
-                <RotateCcw className="w-4 h-4" />
-              </button>
             </div>
 
             <hr className="border-slate-100 w-1/2 mx-auto mb-6" />
@@ -144,9 +128,9 @@ const Hero: React.FC = () => {
                     <GraduationCap className="w-5 h-5 text-blue-500" />
                  </div>
                  <div>
-                    <p className="text-xs text-slate-400 font-semibold uppercase tracking-wider">Education</p>
-                    <p className="font-bold text-slate-800">{PROFILE_DATA.university}</p>
-                    <p className="text-sm text-slate-500">{PROFILE_DATA.gradYear}</p>
+                    <p className="text-xs text-slate-400 font-semibold uppercase tracking-wider">{t("Education", "教育背景")}</p>
+                    <p className="font-bold text-slate-800">{profile.university}</p>
+                    <p className="text-sm text-slate-500">{profile.gradYear}</p>
                  </div>
               </div>
 
@@ -154,15 +138,15 @@ const Hero: React.FC = () => {
               <div className="bg-slate-50 p-4 rounded-xl">
                 <div className="flex items-center mb-3">
                   <Globe className="w-4 h-4 text-slate-400 mr-2" />
-                  <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider">I'm a:</span>
+                  <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider">{t("My Roles", "我的角色")}</span>
                 </div>
                 <ul className="space-y-2">
-                  {roles.map((role, idx) => (
+                  {profile.roles.map((role, idx) => (
                     <motion.li 
-                      key={idx}
+                      key={`${language}-${idx}`}
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.5 + (idx * 0.1) }}
+                      transition={{ delay: 0.1 + (idx * 0.1) }}
                       className="text-slate-700 font-medium flex items-center"
                     >
                       <span className="w-1.5 h-1.5 rounded-full bg-orange-400 mr-3" />

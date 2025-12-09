@@ -2,7 +2,7 @@ import { LucideIcon } from "lucide-react";
 
 export interface SkillItem {
   name: string;
-  level: number; // 0 to 100
+  level: number;
 }
 
 export interface SkillCategory {
@@ -40,7 +40,7 @@ export interface BookItem {
   category: string;
   status: 'Reading' | 'Finished' | 'To Read';
   description: string;
-  coverColor: string; // CSS class for gradient or color
+  coverColor: string;
 }
 
 export interface BlogPost {
@@ -54,9 +54,28 @@ export interface BlogPost {
 
 export interface ProfileData {
   avatarUrl: string;
-  nameCN: string;
-  nameEN: string;
+  name: string;
   university: string;
   gradYear: string;
   roles: string[];
+}
+
+export interface HeroContent {
+  slogan: string;
+  role: string;
+  subRole: string;
+  ctaText: string;
+}
+
+export interface FooterContent {
+  title: string;
+  emailText: string;
+  copyright: string;
+  builtWith: string;
+}
+
+// Container for bilingual data
+export interface LocalizedData<T> {
+  en: T;
+  cn: T;
 }
