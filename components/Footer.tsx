@@ -9,7 +9,11 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="bg-slate-900 text-white py-16">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 text-center">
+      {/* 
+        Width Logic matched with Section.tsx:
+        w-[90%] md:w-[85%] lg:w-[80%] max-w-5xl mx-auto 
+      */}
+      <div className="w-[90%] md:w-[85%] lg:w-[80%] max-w-5xl mx-auto text-center">
         <h2 className="text-2xl font-bold mb-8">{content.title}</h2>
         
         <div className="flex justify-center space-x-8 mb-12">

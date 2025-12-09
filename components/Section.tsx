@@ -21,9 +21,18 @@ const Section: React.FC<SectionProps> = ({
   return (
     <section 
       id={id} 
-      className={`py-20 px-6 md:px-12 lg:px-24 ${lightBackground ? 'bg-slate-50' : 'bg-white'} ${className}`}
+      // Reduced vertical padding (py-16 instead of py-20)
+      // Removed horizontal padding from container, handling it in the inner div width
+      className={`py-16 ${lightBackground ? 'bg-slate-50' : 'bg-white'} ${className}`}
     >
-      <div className="max-w-7xl mx-auto">
+      {/* 
+        Width Logic:
+        - Mobile: 90% width
+        - Tablet: 85% width
+        - Desktop: 80% width
+        - Max Width: 5xl (1024px) to prevent it from getting too wide on ultrawide screens 
+      */}
+      <div className="w-[90%] md:w-[85%] lg:w-[80%] max-w-5xl mx-auto">
         <motion.div 
           className="mb-12 text-center"
           initial={{ opacity: 0, y: 20 }}

@@ -39,7 +39,11 @@ const Navbar: React.FC = () => {
         isScrolled ? 'bg-white/90 backdrop-blur-md shadow-md py-4' : 'bg-transparent py-6'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+      {/* 
+        Width Logic matched with Section.tsx:
+        w-[90%] md:w-[85%] lg:w-[80%] max-w-5xl mx-auto 
+      */}
+      <div className="w-[90%] md:w-[85%] lg:w-[80%] max-w-5xl mx-auto flex justify-between items-center">
         {/* Logo */}
         <div 
           className="flex items-center cursor-pointer" 
