@@ -188,7 +188,8 @@ const Books: React.FC = () => {
         "技术深度不仅来自代码实践，也来自经典书籍的系统化沉淀。"
       )}
     >
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-8 justify-items-center mt-8">
+      {/* Increased vertical gap for mobile (gap-16) to prevent 3D elements overlapping with text below */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 sm:gap-8 justify-items-center mt-8 md:mt-12">
         {data.map((book, index) => (
           <ThreeDBook key={index} book={book} index={index} />
         ))}

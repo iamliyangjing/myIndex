@@ -11,7 +11,7 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20); // More sensitive scroll trigger on mobile
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -21,7 +21,10 @@ const Navbar: React.FC = () => {
     setIsMenuOpen(false);
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      // Offset for sticky navbar
+      const yOffset = -70; 
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
     }
   };
 
@@ -36,29 +39,26 @@ const Navbar: React.FC = () => {
   return (
     <nav 
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/90 backdrop-blur-md shadow-md py-4' : 'bg-transparent py-6'
+        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-3 md:py-4' : 'bg-transparent py-4 md:py-6'
       }`}
     >
-      {/* 
-        Width Logic matched with Section.tsx:
-        w-[90%] md:w-[85%] lg:w-[80%] max-w-5xl mx-auto 
-      */}
-      <div className="w-[90%] md:w-[85%] lg:w-[80%] max-w-5xl mx-auto flex justify-between items-center">
+      {/* Width matched with Section.tsx */}
+      <div className="w-[94%] md:w-[90%] lg:w-[80%] max-w-6xl mx-auto flex justify-between items-center">
         {/* Logo */}
         <div 
           className="flex items-center cursor-pointer" 
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
-          <div className={`p-2 rounded-lg ${isScrolled ? 'bg-primary text-white' : 'bg-white/10 text-white backdrop-blur-sm'}`}>
-            <Code2 className="w-6 h-6" />
+          <div className={`p-1.5 md:p-2 rounded-lg ${isScrolled ? 'bg-primary text-white' : 'bg-white/10 text-white backdrop-blur-sm'}`}>
+            <Code2 className="w-5 h-5 md:w-6 md:h-6" />
           </div>
-          <span className={`ml-3 font-bold text-lg tracking-tight ${isScrolled ? 'text-slate-900' : 'text-white'}`}>
-            Java<span className="text-primary-light">Dev</span>
+          <span className={`ml-2 md:ml-3 font-bold text-base md:text-lg tracking-tight ${isScrolled ? 'text-slate-900' : 'text-white'}`}>
+            Code<span className="text-primary-light">Craft</span>
           </span>
         </div>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
           {navLinks.map((link) => (
             <React.Fragment key={link.label}>
               {link.type === 'internal' ? (
@@ -114,7 +114,7 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="md:hidden flex items-center gap-4">
+        <div className="md:hidden flex items-center gap-3">
           <button
             onClick={toggleLanguage}
             className={`flex items-center gap-1 text-xs font-bold px-2 py-1 rounded border transition-all ${
@@ -130,7 +130,7 @@ const Navbar: React.FC = () => {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className={`p-2 rounded-md ${isScrolled ? 'text-slate-900' : 'text-white'}`}
           >
-            {isMenuOpen ? <X /> : <Menu />}
+            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
@@ -150,7 +150,7 @@ const Navbar: React.FC = () => {
                    {link.type === 'internal' ? (
                     <button
                       onClick={() => scrollToSection(link.id!)}
-                      className="text-left text-slate-600 font-medium py-2 hover:text-primary"
+                      className="text-left text-slate-600 font-medium py-2 hover:text-primary text-lg"
                     >
                       {link.label}
                     </button>
@@ -159,7 +159,7 @@ const Navbar: React.FC = () => {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-left text-slate-600 font-medium py-2 hover:text-primary flex items-center"
+                      className="text-left text-slate-600 font-medium py-2 hover:text-primary flex items-center text-lg"
                     >
                       {link.label}
                       <ExternalLink className="w-4 h-4 ml-2 opacity-50" />

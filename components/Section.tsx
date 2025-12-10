@@ -21,35 +21,34 @@ const Section: React.FC<SectionProps> = ({
   return (
     <section 
       id={id} 
-      // Reduced vertical padding (py-16 instead of py-20)
-      // Removed horizontal padding from container, handling it in the inner div width
-      className={`py-16 ${lightBackground ? 'bg-slate-50' : 'bg-white'} ${className}`}
+      // Reduced vertical padding on mobile (py-12) vs desktop (py-16)
+      className={`py-12 md:py-16 ${lightBackground ? 'bg-slate-50' : 'bg-white'} ${className}`}
     >
       {/* 
-        Width Logic:
-        - Mobile: 90% width
-        - Tablet: 85% width
-        - Desktop: 80% width
-        - Max Width: 5xl (1024px) to prevent it from getting too wide on ultrawide screens 
+        Responsive Width Logic:
+        - Mobile: w-[94%] (Maximize screen real estate, minimal margins)
+        - Tablet: w-[90%] 
+        - Desktop: w-[80%] (Keep the elegant narrow look)
+        - Max Width: max-w-6xl (Allow slightly wider on huge screens)
       */}
-      <div className="w-[90%] md:w-[85%] lg:w-[80%] max-w-5xl mx-auto">
+      <div className="w-[94%] md:w-[90%] lg:w-[80%] max-w-6xl mx-auto">
         <motion.div 
-          className="mb-12 text-center"
+          className="mb-10 md:mb-12 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3 md:mb-4 tracking-tight">
             {title}
           </h2>
           {subtitle && (
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto px-2">
               {subtitle}
             </p>
           )}
           <motion.div 
-            className="w-20 h-1 bg-primary-light mx-auto mt-6 rounded-full"
+            className="w-16 md:w-20 h-1 bg-primary-light mx-auto mt-4 md:mt-6 rounded-full"
             initial={{ width: 0 }}
             whileInView={{ width: 80 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -59,7 +58,7 @@ const Section: React.FC<SectionProps> = ({
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
           {children}

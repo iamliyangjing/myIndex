@@ -11,7 +11,7 @@ import { ExperienceItem, LearningItem, SkillCategory, BookItem, LocalizedData, P
 // Profile Data
 export const PROFILE_DATA: LocalizedData<ProfileData> = {
   en: {
-    avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=JavaDev&backgroundColor=ffdfbf",
+    avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=CodeCraft&backgroundColor=ffdfbf",
     name: "Java Architect",
     university: "University of Technology",
     gradYear: "Class of 2018",
@@ -23,7 +23,7 @@ export const PROFILE_DATA: LocalizedData<ProfileData> = {
     ]
   },
   cn: {
-    avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=JavaDev&backgroundColor=ffdfbf",
+    avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=CodeCraft&backgroundColor=ffdfbf",
     name: "Java 架构师",
     university: "某知名理工大学",
     gradYear: "2018 届毕业生",
@@ -267,6 +267,10 @@ export const LEARNING_DATA: LocalizedData<LearningItem[]> = {
 };
 
 // Books
+// Tips for finding book covers:
+// 1. Amazon: Go to book detail page, right click cover -> "Copy image address". URL usually contains ._SL1500_.jpg
+// 2. Douban (for Chinese books): Right click cover -> "Copy image address".
+// 3. Publisher sites (O'Reilly, Manning): Usually have high res covers.
 export const BOOKS_DATA: LocalizedData<BookItem[]> = {
   en: [
     {
