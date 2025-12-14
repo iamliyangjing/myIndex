@@ -12,26 +12,24 @@ import { ExperienceItem, LearningItem, SkillCategory, BookItem, LocalizedData, P
 export const PROFILE_DATA: LocalizedData<ProfileData> = {
   en: {
     avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=CodeCraft&backgroundColor=ffdfbf",
-    name: "Java Architect",
-    university: "University of Technology",
-    gradYear: "Class of 2018",
+    name: "Cooper",
+    university: "Southwest Petroleum University",
+    gradYear: "Class of 2023",
     roles: [
-      "Senior Backend Developer",
-      "Distributed Systems Architect",
-      "Open Source Contributor",
-      "Tech Blogger"
+      "Backend Engineer",
+      "Java Developer",
+      "Distributed Systems Enthusiast"
     ]
   },
   cn: {
     avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=CodeCraft&backgroundColor=ffdfbf",
-    name: "Java 架构师",
-    university: "某知名理工大学",
-    gradYear: "2018 届毕业生",
+    name: "Cooper",
+    university: "西南石油大学",
+    gradYear: "2023届",
     roles: [
-      "资深 Java 后端开发",
-      "分布式系统架构师",
-      "开源项目贡献者",
-      "技术博主"
+      "后端开发工程师",
+      "Java 开发者",
+      "分布式系统爱好者"
     ]
   }
 };
@@ -39,16 +37,16 @@ export const PROFILE_DATA: LocalizedData<ProfileData> = {
 // Hero Content
 export const HERO_CONTENT: LocalizedData<HeroContent> = {
   en: {
-    slogan: "Building Efficient & Reliable Distributed Systems",
-    role: "Java Backend Engineer",
-    subRole: "Specializing in Spring Boot/Cloud and High Performance Computing",
+    slogan: "3 Years of Business-Centric Backend Development",
+    role: "Backend Development Engineer",
+    subRole: "Expert in blending technology with business, specializing in Spring Boot & Distributed Architecture",
     ctaText: "View Skills",
     downloadText: "Download Resume",
   },
   cn: {
-    slogan: "构建高效可靠的分布式 Java 应用",
-    role: "Java 后端开发工程师",
-    subRole: "专注于 Spring Boot/Cloud 和 高性能系统",
+    slogan: "3年扎根业务的后端开发经验",
+    role: "后端开发工程师",
+    subRole: "擅长将技术与业务深度结合，精通 Spring Boot 与分布式架构",
     ctaText: "查看技术栈",
     downloadText: "下载简历",
   }
@@ -61,96 +59,76 @@ export const SKILL_CATEGORIES: LocalizedData<SkillCategory[]> = {
       title: "Java Core",
       icon: Code,
       skills: [
-        { name: "Java 17+", level: 95 },
-        { name: "Spring Boot", level: 90 },
-        { name: "Spring Cloud", level: 85 },
-        { name: "MyBatis / JPA", level: 85 },
+        { name: "Java Basics (JUC/JVM)", level: 90 },
+        { name: "Spring Boot/MVC", level: 90 },
+        { name: "MyBatis-Plus", level: 85 },
+        { name: "Design Patterns", level: 85 },
       ],
     },
     {
       title: "Architecture & Middleware",
       icon: Server,
       skills: [
-        { name: "Microservices", level: 90 },
-        { name: "RESTful API", level: 95 },
-        { name: "Kafka / RocketMQ", level: 80 },
-        { name: "Redis", level: 85 },
+        { name: "RabbitMQ / Kafka", level: 85 },
+        { name: "Redis / Dist. Lock", level: 85 },
+        { name: "DDD / RPC", level: 80 },
+        { name: "Netty / Zookeeper", level: 75 },
       ],
     },
     {
-      title: "Database",
+      title: "Database & Search",
       icon: Database,
       skills: [
-        { name: "MySQL Tuning", level: 85 },
-        { name: "PostgreSQL", level: 80 },
-        { name: "Elasticsearch", level: 70 },
+        { name: "MySQL Tuning", level: 90 },
+        { name: "Elasticsearch", level: 80 },
       ],
     },
     {
-      title: "DevOps & Cloud",
+      title: "DevOps",
       icon: Cloud,
       skills: [
-        { name: "Docker", level: 85 },
-        { name: "Kubernetes (K8s)", level: 75 },
-        { name: "Jenkins CI/CD", level: 80 },
-      ],
-    },
-    {
-      title: "Testing & QA",
-      icon: ShieldCheck,
-      skills: [
-        { name: "JUnit 5", level: 90 },
-        { name: "Mockito", level: 85 },
-        { name: "SonarQube", level: 75 },
+        { name: "Docker / Linux", level: 80 },
+        { name: "Nginx / Shell", level: 75 },
+        { name: "Jenkins / CI/CD", level: 80 },
       ],
     },
   ],
   cn: [
     {
-      title: "Java 生态核心",
+      title: "Java 核心",
       icon: Code,
       skills: [
-        { name: "Java 17+", level: 95 },
-        { name: "Spring Boot", level: 90 },
-        { name: "Spring Cloud", level: 85 },
-        { name: "MyBatis / JPA", level: 85 },
+        { name: "Java 基础 (JUC/JVM)", level: 90 },
+        { name: "Spring Boot/MVC", level: 90 },
+        { name: "MyBatis-Plus", level: 85 },
+        { name: "设计模式", level: 85 },
       ],
     },
     {
       title: "架构与中间件",
       icon: Server,
       skills: [
-        { name: "微服务架构", level: 90 },
-        { name: "RESTful API", level: 95 },
-        { name: "Kafka / RocketMQ", level: 80 },
-        { name: "Redis", level: 85 },
+        { name: "RabbitMQ / Kafka", level: 85 },
+        { name: "Redis / 分布式锁", level: 85 },
+        { name: "DDD / RPC", level: 80 },
+        { name: "Netty / Zookeeper", level: 75 },
       ],
     },
     {
-      title: "数据库",
+      title: "数据库与搜索",
       icon: Database,
       skills: [
-        { name: "MySQL 调优", level: 85 },
-        { name: "PostgreSQL", level: 80 },
-        { name: "Elasticsearch", level: 70 },
+        { name: "MySQL 调优", level: 90 },
+        { name: "Elasticsearch", level: 80 },
       ],
     },
     {
-      title: "DevOps 与云原生",
+      title: "运维与工具",
       icon: Cloud,
       skills: [
-        { name: "Docker", level: 85 },
-        { name: "Kubernetes (K8s)", level: 75 },
-        { name: "Jenkins CI/CD", level: 80 },
-      ],
-    },
-    {
-      title: "测试与质量保障",
-      icon: ShieldCheck,
-      skills: [
-        { name: "JUnit 5", level: 90 },
-        { name: "Mockito", level: 85 },
-        { name: "SonarQube", level: 75 },
+        { name: "Docker / Linux", level: 80 },
+        { name: "Nginx / Shell", level: 75 },
+        { name: "Jenkins / CI/CD", level: 80 },
       ],
     },
   ]
@@ -161,33 +139,59 @@ export const EXPERIENCE_DATA: LocalizedData<ExperienceItem[]> = {
   en: [
     {
       id: "exp-1",
-      period: "2021 - Present",
-      role: "Senior Java Engineer",
-      company: "TechFin Solutions",
-      description: "Leading payment gateway migration and core architecture upgrades, ensuring system stability under high concurrency.",
+      period: "2023.03 - Present",
+      role: "Backend Developer",
+      company: "Lingbao Technology Co., Ltd.",
+      description: "Responsible for the DTM product design, premium calculation, and policy issuance process of the insurance agency platform. Led the development of four major products.",
       achievements: [
-        "Optimized core transaction service, reducing average latency from 150ms to 30ms.",
-        "Designed and implemented a high-availability distributed lock system using Redis.",
-        "Led the migration from monolithic services to Spring Cloud Alibaba microservices architecture.",
+        "Optimized complex BI premium calculation, reducing latency from 120s to 30s (75% efficiency boost).",
+        "Designed SaaS-based issuance service (OpenAPI), reducing integration time from weeks to days.",
+        "Refactored report generation module using multi-threading and index optimization.",
+        "Implemented multi-tenant architecture with physical isolation for data security.",
       ],
       projects: [
         {
-          name: "High-Freq Trading Engine",
-          description: "Low-latency matching engine handling 10k TPS.",
-          technologies: ["Java 17", "LMAX Disruptor", "Netty"],
+          name: "STORM Platform",
+          description: "Cross-border insurance agency & channel management platform serving Malaysia market.",
+          technologies: ["Spring Boot", "MySQL", "ES", "Liquibase"],
           link: "#",
         }
       ]
     },
     {
       id: "exp-2",
-      period: "2018 - 2021",
-      role: "Java Developer",
-      company: "Top E-commerce Co.",
-      description: "Responsible for order processing center and inventory management backend services.",
+      period: "2022.10 - 2025.03",
+      role: "Independent Developer",
+      company: "Personal Projects",
+      description: "Design and implementation of distributed middleware and utility components.",
       achievements: [
-        "Refactored legacy code, increasing unit test coverage from 40% to 85%.",
-        "Introduced Kafka for asynchronous order processing to handle traffic spikes during sales.",
+        "Built a high-performance RPC framework from scratch.",
+        "Developed a local task message processing component with DDD architecture.",
+      ],
+      projects: [
+        {
+          name: "Mini Distributed RPC",
+          description: "Lightweight RPC framework based on Netty, Zookeeper, and Kyro.",
+          technologies: ["Netty", "Zookeeper", "Protobuf", "Spring"],
+          link: "https://github.com/iamliyangjing",
+        },
+        {
+          name: "Task Message Component",
+          description: "High-availability local task processing component with sharding and retry mechanisms.",
+          technologies: ["Spring Boot", "RabbitMQ", "DDD"],
+          link: "#",
+        }
+      ]
+    },
+    {
+      id: "exp-3",
+      period: "2022.09 - 2023.02",
+      role: "Backend Intern",
+      company: "AIA / CAT",
+      description: "Designed and developed the Online Purchase Journey for D2C products.",
+      achievements: [
+        "Defined product infrastructure and page presentation logic.",
+        "Implemented full-process marketing from customer acquisition to policy issuance.",
       ],
       projects: []
     }
@@ -195,33 +199,59 @@ export const EXPERIENCE_DATA: LocalizedData<ExperienceItem[]> = {
   cn: [
     {
       id: "exp-1",
-      period: "2021 - 至今",
-      role: "高级 Java 工程师",
-      company: "TechFin 解决方案",
-      description: "主导支付网关迁移及核心架构升级，负责高并发场景下的系统稳定性。",
+      period: "2023.03 - 至今",
+      role: "后端开发工程师",
+      company: "领保科技股份有限公司",
+      description: "负责保险代理平台的 DTM 产品设计、保费计算及出单流程。至今承担四个大型产品的研发设计，参与从需求评审到上线的全流程。",
       achievements: [
-        "优化核心交易服务，将 平均响应时间 (Latency) 从 150ms 降至 30ms。",
-        "设计并实现了基于 Redis 的高可用分布式锁系统，解决了重复扣款问题。",
-        "主导单体服务向 Spring Cloud Alibaba 微服务架构的迁移，提升了开发效率。",
+        "优化复杂保险产品 BI 计算，引入 FutureTask 异步计算，耗时由 120s 降至 30s，效率提升 75%。",
+        "设计 OpenAPI 形式的 SaaS 化出单服务，将客户集成周期从周缩短至天。",
+        "重构报表生成模块，通过多线程并发和索引优化，解决性能瓶颈。",
+        "负责多租户架构设计，落地物理层面的租户隔离方案，确保数据安全。",
       ],
       projects: [
         {
-          name: "高频交易引擎",
-          description: "处理能力达 10k TPS 的低延迟撮合引擎。",
-          technologies: ["Java 17", "LMAX Disruptor", "Netty"],
+          name: "STORM 跨境保险平台",
+          description: "面向马来西亚市场的保险代理及渠道管理平台，支撑超40款本地化产品。",
+          technologies: ["Spring Boot", "MySQL", "ES", "Liquibase"],
           link: "#",
         }
       ]
     },
     {
       id: "exp-2",
-      period: "2018 - 2021",
-      role: "Java 开发工程师",
-      company: "某知名电商公司",
-      description: "负责订单处理中心和库存管理后端服务的开发与维护。",
+      period: "2022.10 - 2025.03",
+      role: "独立开发者",
+      company: "个人开源项目",
+      description: "专注于分布式中间件与通用组件的设计与实现。",
       achievements: [
-        "重构遗留代码，将核心模块单元测试覆盖率从 40% 提升至 85%。",
-        "引入 Kafka 进行异步订单处理，有效削峰填谷，平稳度过大促流量激增。",
+        "从零设计并实现高性能 RPC 框架。",
+        "基于 DDD 架构开发高可用本地任务消息处理组件。",
+      ],
+      projects: [
+        {
+          name: "Mini 分布式 RPC 框架",
+          description: "基于 Netty + Zookeeper 的轻量级 RPC，支持 SPI 扩展与多种序列化。",
+          technologies: ["Netty", "Zookeeper", "Protobuf", "Spring"],
+          link: "https://github.com/iamliyangjing",
+        },
+        {
+          name: "本地任务消息组件",
+          description: "支持分片、重试、双通道通知的异步任务处理组件，采用 DDD 四层架构。",
+          technologies: ["Spring Boot", "RabbitMQ", "DDD"],
+          link: "#",
+        }
+      ]
+    },
+    {
+      id: "exp-3",
+      period: "2022.09 - 2023.02",
+      role: "后端开发实习生",
+      company: "友邦保险咨询科技 (AIA)",
+      description: "负责设计研发 D2C 产品的 Online Purchase Journey。",
+      achievements: [
+        "定义产品基础结构在页面的呈现方式。",
+        "实现了 Direct User 从购买到出单的全流程营销闭环。",
       ],
       projects: []
     }
@@ -451,13 +481,13 @@ export const FOOTER_CONTENT: LocalizedData<FooterContent> = {
   en: {
     title: "Ready to build scalable systems?",
     emailText: "Email Me",
-    copyright: "© 2024 Java Backend Engineer. All rights reserved.",
+    copyright: "© 2024 Cooper. All rights reserved.",
     builtWith: "Built with React, TypeScript & Tailwind CSS",
   },
   cn: {
     title: "准备好构建可扩展的系统了吗？",
     emailText: "发送邮件",
-    copyright: "© 2024 Java 后端工程师. 保留所有权利.",
+    copyright: "© 2024 Cooper. 保留所有权利.",
     builtWith: "基于 React, TypeScript & Tailwind CSS 构建",
   }
 };
@@ -465,6 +495,6 @@ export const FOOTER_CONTENT: LocalizedData<FooterContent> = {
 // External Links
 export const BLOG_URL = "https://juejin.cn";
 export const CONTACT_INFO = {
-  email: "developer@example.com",
-  github: "https://github.com/yourusername",
+  email: "958390434@qq.com",
+  github: "https://github.com/iamliyangjing",
 };
