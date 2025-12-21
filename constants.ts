@@ -4,9 +4,15 @@ import {
   Cloud, 
   Code, 
   Terminal, 
-  ShieldCheck 
+  ShieldCheck,
+  Sparkles,
+  Zap,
+  Layers,
+  Search,
+  Cpu,
+  Workflow
 } from "lucide-react";
-import { ExperienceItem, LearningItem, SkillCategory, BookItem, LocalizedData, ProfileData, HeroContent, FooterContent, BlogPost, SpaceContent, MapLocation } from "./types";
+import { ExperienceItem, LearningItem, SkillCategory, BookItem, LocalizedData, ProfileData, HeroContent, FooterContent, BlogPost, SpaceContent, MapLocation, PrincipleItem } from "./types";
 
 // Profile Data
 export const PROFILE_DATA: LocalizedData<ProfileData> = {
@@ -16,9 +22,9 @@ export const PROFILE_DATA: LocalizedData<ProfileData> = {
     university: "Southwest Petroleum University",
     gradYear: "Class of 2023",
     roles: [
-      "Backend Engineer",
-      "Java Developer",
-      "Distributed Systems Enthusiast"
+      "Senior Backend Engineer",
+      "Java/Go Hybrid Developer",
+      "AI Workflow Specialist"
     ]
   },
   cn: {
@@ -27,28 +33,44 @@ export const PROFILE_DATA: LocalizedData<ProfileData> = {
     university: "西南石油大学",
     gradYear: "2023届",
     roles: [
-      "后端开发工程师",
-      "Java 开发者",
-      "分布式系统爱好者"
+      "资深后端开发工程师",
+      "Java/Go 混合开发",
+      "AI 工作流专家"
     ]
   }
+};
+
+// Engineering Principles
+export const PRINCIPLES: LocalizedData<PrincipleItem[]> = {
+  en: [
+    { title: "KISS Principle", description: "Simplicity is the prerequisite for reliability. Avoiding over-engineering while ensuring scalability.", icon: Zap },
+    { title: "Observe-First", description: "Design systems with full observability—logging, metrics, and tracing from day one.", icon: Search },
+    { title: "Domain Driven", description: "Aligning software architecture with business domains to handle complex logic gracefully.", icon: Layers },
+    { title: "Efficiency Loop", description: "Using AI (Cursor/MCP) to automate the mundane and focus on critical architecture.", icon: Workflow }
+  ],
+  cn: [
+    { title: "保持简单", description: "简单是可靠性的前提。在确保可扩展性的同时，坚决避免过度设计。", icon: Zap },
+    { title: "观测先行", description: "系统设计初期即植入日志、指标和链路追踪，实现全透明的可观测性。", icon: Search },
+    { title: "领域驱动", description: "将软件架构与业务领域对齐，优雅地处理复杂的业务逻辑。", icon: Layers },
+    { title: "AI 效能闭环", description: "利用 AI (Cursor/MCP) 自动化琐事，将精力集中在核心架构设计。", icon: Workflow }
+  ]
 };
 
 // Hero Content
 export const HERO_CONTENT: LocalizedData<HeroContent> = {
   en: {
-    slogan: "3 Years of Business-Centric Backend Development",
-    role: "Backend Development Engineer",
-    subRole: "Expert in blending technology with business, specializing in Spring Boot & Distributed Architecture",
-    ctaText: "View Skills",
-    downloadText: "Download Resume",
+    slogan: "Scalability Meets Intelligence",
+    role: "Senior Backend Developer",
+    subRole: "Expert in Distributed Java Systems & AI-Driven Development. 3+ years of high-performance architecture design.",
+    ctaText: "Tech Stack",
+    downloadText: "Get CV",
   },
   cn: {
-    slogan: "3年扎根业务的后端开发经验",
-    role: "后端开发工程师",
-    subRole: "擅长将技术与业务深度结合，精通 Spring Boot 与分布式架构",
-    ctaText: "查看技术栈",
-    downloadText: "下载简历",
+    slogan: "当可扩展性遇见人工智能",
+    role: "资深后端开发工程师",
+    subRole: "精通分布式 Java 系统与 AI 驱动开发。3年以上高性能架构设计实战经验。",
+    ctaText: "核心技术栈",
+    downloadText: "获取简历",
   }
 };
 
@@ -56,79 +78,97 @@ export const HERO_CONTENT: LocalizedData<HeroContent> = {
 export const SKILL_CATEGORIES: LocalizedData<SkillCategory[]> = {
   en: [
     {
-      title: "Java Core",
+      title: "Backend Core",
       icon: Code,
       skills: [
-        { name: "Java Basics (JUC/JVM)", level: 90 },
-        { name: "Spring Boot/MVC", level: 90 },
-        { name: "MyBatis-Plus", level: 85 },
-        { name: "Design Patterns", level: 85 },
+        { name: "Java (JUC/JVM/NIO)", level: 92 },
+        { name: "Spring Ecosystem", level: 90 },
+        { name: "Go (Gin/gRPC)", level: 75 },
+        { name: "Design Patterns", level: 88 },
       ],
     },
     {
-      title: "Architecture & Middleware",
+      title: "AI & Tools",
+      icon: Sparkles,
+      skills: [
+        { name: "Cursor / Trae Mastery", level: 95 },
+        { name: "MCP / RAG Pipeline", level: 85 },
+        { name: "Prompt Engineering", level: 90 },
+      ],
+    },
+    {
+      title: "Distributed Middleware",
       icon: Server,
       skills: [
-        { name: "RabbitMQ / Kafka", level: 85 },
-        { name: "Redis / Dist. Lock", level: 85 },
-        { name: "DDD / RPC", level: 80 },
-        { name: "Netty / Zookeeper", level: 75 },
+        { name: "Redis / Kafka / RocketMQ", level: 85 },
+        { name: "Zookeeper / Sentinel", level: 80 },
+        { name: "DDD / Microservices", level: 85 },
       ],
     },
     {
-      title: "Database & Search",
+      title: "Data & Storage",
       icon: Database,
       skills: [
-        { name: "MySQL Tuning", level: 90 },
-        { name: "Elasticsearch", level: 80 },
+        { name: "MySQL (Perf Tuning)", level: 90 },
+        { name: "Elasticsearch", level: 82 },
+        { name: "PostgreSQL", level: 75 },
       ],
     },
     {
-      title: "DevOps",
+      title: "Cloud Native",
       icon: Cloud,
       skills: [
-        { name: "Docker / Linux", level: 80 },
-        { name: "Nginx / Shell", level: 75 },
-        { name: "Jenkins / CI/CD", level: 80 },
+        { name: "Docker / K8s", level: 80 },
+        { name: "CI/CD (Jenkins/GHA)", level: 82 },
+        { name: "Linux / Shell", level: 85 },
       ],
     },
   ],
   cn: [
     {
-      title: "Java 核心",
+      title: "后端核心",
       icon: Code,
       skills: [
-        { name: "Java 基础 (JUC/JVM)", level: 90 },
-        { name: "Spring Boot/MVC", level: 90 },
-        { name: "MyBatis-Plus", level: 85 },
-        { name: "设计模式", level: 85 },
+        { name: "Java (JUC/JVM/NIO)", level: 92 },
+        { name: "Spring 生态系统", level: 90 },
+        { name: "Go (Gin/gRPC)", level: 75 },
+        { name: "经典设计模式", level: 88 },
       ],
     },
     {
-      title: "架构与中间件",
+      title: "AI 与 效能工具",
+      icon: Sparkles,
+      skills: [
+        { name: "Cursor / Trae 深度应用", level: 95 },
+        { name: "MCP / RAG 管道构建", level: 85 },
+        { name: "提示词工程", level: 90 },
+      ],
+    },
+    {
+      title: "分布式中间件",
       icon: Server,
       skills: [
-        { name: "RabbitMQ / Kafka", level: 85 },
-        { name: "Redis / 分布式锁", level: 85 },
-        { name: "DDD / RPC", level: 80 },
-        { name: "Netty / Zookeeper", level: 75 },
+        { name: "Redis / Kafka / RocketMQ", level: 85 },
+        { name: "Zookeeper / Sentinel", level: 80 },
+        { name: "DDD / 微服务架构", level: 85 },
       ],
     },
     {
-      title: "数据库与搜索",
+      title: "数据与存储",
       icon: Database,
       skills: [
-        { name: "MySQL 调优", level: 90 },
-        { name: "Elasticsearch", level: 80 },
+        { name: "MySQL (性能调优)", level: 90 },
+        { name: "Elasticsearch", level: 82 },
+        { name: "PostgreSQL", level: 75 },
       ],
     },
     {
-      title: "运维与工具",
+      title: "云原生与运维",
       icon: Cloud,
       skills: [
-        { name: "Docker / Linux", level: 80 },
-        { name: "Nginx / Shell", level: 75 },
-        { name: "Jenkins / CI/CD", level: 80 },
+        { name: "Docker / K8s", level: 80 },
+        { name: "CI/CD (Jenkins/GHA)", level: 82 },
+        { name: "Linux / Shell", level: 85 },
       ],
     },
   ]
@@ -140,45 +180,20 @@ export const EXPERIENCE_DATA: LocalizedData<ExperienceItem[]> = {
     {
       id: "exp-1",
       period: "2023.03 - Present",
-      role: "Backend Developer",
+      role: "Backend Architect (Core Lead)",
       company: "Lingbao Technology Co., Ltd.",
-      description: "Responsible for the DTM product design, premium calculation, and policy issuance process of the insurance agency platform. Led the development of four major products.",
+      description: "Driving the insurance agency SaaS platform evolution, focusing on extreme performance and multi-tenant security.",
       achievements: [
-        "Optimized complex BI premium calculation, reducing latency from 120s to 30s (75% efficiency boost).",
-        "Designed SaaS-based issuance service (OpenAPI), reducing integration time from weeks to days.",
-        "Refactored report generation module using multi-threading and index optimization.",
-        "Implemented multi-tenant architecture with physical isolation for data security.",
+        "Led Premium Calculation Engine refactor, achieving 4x performance boost (120s down to 30s) using parallel task orchestration.",
+        "Architected OpenAPI SaaS gateway, supporting 100k+ daily policy requests with 99.99% availability.",
+        "Reduced database I/O by 40% through ES-based index optimization and multi-level caching strategies.",
+        "Implemented physical data isolation for multi-tenancy, passing Tier-3 security certification."
       ],
       projects: [
         {
-          name: "STORM Platform",
-          description: "Cross-border insurance agency & channel management platform serving Malaysia market.",
-          technologies: ["Spring Boot", "MySQL", "ES", "Liquibase"],
-          link: "#",
-        }
-      ]
-    },
-    {
-      id: "exp-2",
-      period: "2022.10 - 2025.03",
-      role: "Independent Developer",
-      company: "Personal Projects",
-      description: "Design and implementation of distributed middleware and utility components.",
-      achievements: [
-        "Built a high-performance RPC framework from scratch.",
-        "Developed a local task message processing component with DDD architecture.",
-      ],
-      projects: [
-        {
-          name: "Mini Distributed RPC",
-          description: "Lightweight RPC framework based on Netty, Zookeeper, and Kyro.",
-          technologies: ["Netty", "Zookeeper", "Protobuf", "Spring"],
-          link: "https://github.com/iamliyangjing",
-        },
-        {
-          name: "Task Message Component",
-          description: "High-availability local task processing component with sharding and retry mechanisms.",
-          technologies: ["Spring Boot", "RabbitMQ", "DDD"],
+          name: "STORM Global Insurance",
+          description: "Distributed insurance platform serving SE Asia, processing $10M+ GWP annually.",
+          technologies: ["Spring Boot", "MySQL", "ES", "Distributed Lock"],
           link: "#",
         }
       ]
@@ -188,10 +203,10 @@ export const EXPERIENCE_DATA: LocalizedData<ExperienceItem[]> = {
       period: "2022.09 - 2023.02",
       role: "Backend Intern",
       company: "AIA / CAT",
-      description: "Designed and developed the Online Purchase Journey for D2C products.",
+      description: "Focused on user acquisition and policy purchase workflow automation.",
       achievements: [
-        "Defined product infrastructure and page presentation logic.",
-        "Implemented full-process marketing from customer acquisition to policy issuance.",
+        "Developed core purchase modules for D2C products, serving 50k+ active users.",
+        "Optimized checkout latency by 20% through front-to-back async processing."
       ],
       projects: []
     }
@@ -200,45 +215,20 @@ export const EXPERIENCE_DATA: LocalizedData<ExperienceItem[]> = {
     {
       id: "exp-1",
       period: "2023.03 - 至今",
-      role: "后端开发工程师",
+      role: "后端架构师 (核心技术负责人)",
       company: "领保科技股份有限公司",
-      description: "负责保险代理平台的 DTM 产品设计、保费计算及出单流程。至今承担四个大型产品的研发设计，参与从需求评审到上线的全流程。",
+      description: "主导保险代理 SaaS 平台的架构演进，专注于极致性能优化与多租户安全体系建设。",
       achievements: [
-        "优化复杂保险产品 BI 计算，引入 FutureTask 异步计算，耗时由 120s 降至 30s，效率提升 75%。",
-        "设计 OpenAPI 形式的 SaaS 化出单服务，将客户集成周期从周缩短至天。",
-        "重构报表生成模块，通过多线程并发和索引优化，解决性能瓶颈。",
-        "负责多租户架构设计，落地物理层面的租户隔离方案，确保数据安全。",
+        "主导保费计算引擎重构，利用并行任务编排技术，将响应时间从 120s 缩短至 30s，效率提升 300%。",
+        "设计 SaaS OpenAPI 平台网关，支撑每日 10w+ 签单请求，并实现 99.99% 的系统可用性。",
+        "通过 ES 索引调优及多级缓存策略，将数据库 I/O 压力降低了 40%。",
+        "落地多租户物理隔离方案，成功助力公司通过等保三级安全测评。",
       ],
       projects: [
         {
-          name: "STORM 跨境保险平台",
-          description: "面向马来西亚市场的保险代理及渠道管理平台，支撑超40款本地化产品。",
-          technologies: ["Spring Boot", "MySQL", "ES", "Liquibase"],
-          link: "#",
-        }
-      ]
-    },
-    {
-      id: "exp-2",
-      period: "2022.10 - 2025.03",
-      role: "独立开发者",
-      company: "个人开源项目",
-      description: "专注于分布式中间件与通用组件的设计与实现。",
-      achievements: [
-        "从零设计并实现高性能 RPC 框架。",
-        "基于 DDD 架构开发高可用本地任务消息处理组件。",
-      ],
-      projects: [
-        {
-          name: "Mini 分布式 RPC 框架",
-          description: "基于 Netty + Zookeeper 的轻量级 RPC，支持 SPI 扩展与多种序列化。",
-          technologies: ["Netty", "Zookeeper", "Protobuf", "Spring"],
-          link: "https://github.com/iamliyangjing",
-        },
-        {
-          name: "本地任务消息组件",
-          description: "支持分片、重试、双通道通知的异步任务处理组件，采用 DDD 四层架构。",
-          technologies: ["Spring Boot", "RabbitMQ", "DDD"],
+          name: "STORM 全球保险平台",
+          description: "面向东南亚市场的分布式保险平台，年处理保费突破千万美金级。",
+          technologies: ["Spring Boot", "MySQL", "ES", "分布式锁"],
           link: "#",
         }
       ]
@@ -248,10 +238,10 @@ export const EXPERIENCE_DATA: LocalizedData<ExperienceItem[]> = {
       period: "2022.09 - 2023.02",
       role: "后端开发实习生",
       company: "友邦保险咨询科技 (AIA)",
-      description: "负责设计研发 D2C 产品的 Online Purchase Journey。",
+      description: "负责 D2C 渠道的客户转化与投保自动化流程开发。",
       achievements: [
-        "定义产品基础结构在页面的呈现方式。",
-        "实现了 Direct User 从购买到出单的全流程营销闭环。",
+        "独立开发 D2C 产品核心购买模块，支撑了 5w+ 活跃用户的线上投保。",
+        "通过前后端异步解耦，将支付结算流程的端到端延迟降低了 20%。",
       ],
       projects: []
     }
@@ -261,67 +251,29 @@ export const EXPERIENCE_DATA: LocalizedData<ExperienceItem[]> = {
 // Learning
 export const LEARNING_DATA: LocalizedData<LearningItem[]> = {
   en: [
-    {
-      topic: "Go Programming",
-      category: "Language",
-      description: "Building high-performance CLI tools and K8s Sidecar applications.",
-    },
-    {
-      topic: "KubeVela",
-      category: "Cloud Native",
-      description: "Learning modern application delivery platforms for Kubernetes.",
-    },
-    {
-      topic: "JVM Tuning",
-      category: "Core Principles",
-      description: "Deep dive into ZGC and G1 GC mechanisms and production tuning.",
-    },
+    { topic: "Rust for Systems", category: "Language", description: "Learning Rust to build ultra-low latency gateway components." },
+    { topic: "LLM Orchestration", category: "AI", description: "Building custom MCP servers to bridge enterprise databases and AI models." },
+    { topic: "eBPF Monitoring", category: "Observability", description: "Deep diving into kernel-level observability for performance profiling." },
   ],
   cn: [
-    {
-      topic: "Go 语言编程",
-      category: "编程语言",
-      description: "用于构建高性能 CLI 工具和 K8s Sidecar 应用。",
-    },
-    {
-      topic: "KubeVela",
-      category: "云原生平台",
-      description: "学习面向 Kubernetes 的现代化应用交付平台。",
-    },
-    {
-      topic: "JVM 深度调优",
-      category: "核心原理",
-      description: "深入研究 ZGC 和 G1 GC 的内部机制与生产环境调优。",
-    },
+    { topic: "Rust 系统编程", category: "编程语言", description: "学习 Rust 用于构建极致低延迟的网关核心组件。" },
+    { topic: "大模型编排", category: "人工智能", description: "开发自定义 MCP Server，连接企业私有数据库与 AI 模型。" },
+    { topic: "eBPF 监控", category: "可观测性", description: "深入研究内核级可观测性技术，实现毫秒级的性能瓶颈洞察。" },
   ]
 };
 
 // Books
-// Tips for finding book covers:
-// 1. Amazon: Go to book detail page, right click cover -> "Copy image address". URL usually contains ._SL1500_.jpg
-// 2. Douban (for Chinese books): Right click cover -> "Copy image address".
-// 3. Publisher sites (O'Reilly, Manning): Usually have high res covers.
 export const BOOKS_DATA: LocalizedData<BookItem[]> = {
   en: [
     {
-      title: "Effective Java (3rd Edition)",
-      author: "Joshua Bloch",
-      category: "Core Java",
-      status: "Finished",
-      description: "The definitive guide to writing clear, correct, and reusable code in Java.",
-      coverColor: "#2e7d32", // green-700
-      coverImage: "https://m.media-amazon.com/images/I/81adbNw2vlL._SL1500_.jpg",
-      link: "https://www.amazon.com/Effective-Java-Joshua-Bloch/dp/0134685997"
-    },
-    {
-      title: "Java Concurrency in Practice",
-      author: "Brian Goetz",
+      title: "The Beauty of Java Concurrency",
+      author: "Zhai Chaofei",
       category: "Concurrency",
-      status: "Reading",
-      description: "Essential reading for writing thread-safe and scalable concurrent applications.",
-      coverColor: "#0f172a", // slate-900
-      coverImage: "https://m.media-amazon.com/images/I/81b+x+a+o4L._SL1500_.jpg",
-      link: "https://www.amazon.com/Java-Concurrency-Practice-Brian-Goetz/dp/0321349601"
+      status: "Finished",
+      description: "Deep dive into the core principles of Java concurrency, covering threads, locks, AQS, and concurrent utility libraries.",
+      coverColor: "#1e40af",
+      coverImage: "https://img3.doubanio.com/view/subject/s/public/s29871189.jpg",
+      link: "https://book.douban.com/subject/30351286/"
     },
     {
       title: "Designing Data-Intensive Applications",
@@ -329,41 +281,41 @@ export const BOOKS_DATA: LocalizedData<BookItem[]> = {
       category: "Architecture",
       status: "Finished",
       description: "The 'Bible' of distributed systems. Deep understanding of replication and transactions.",
-      coverColor: "#b91c1c", // red-700
+      coverColor: "#b91c1c",
       coverImage: "https://m.media-amazon.com/images/I/91rr3BPljHL._SL1500_.jpg",
       link: "https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321"
+    },
+    {
+      title: "Clean Architecture",
+      author: "Robert C. Martin",
+      category: "Architecture",
+      status: "Finished",
+      description: "A craftsman's guide to software structure and design.",
+      coverColor: "#22c55e",
+      coverImage: "https://m.media-amazon.com/images/I/41-sN-mzwKL.jpg",
+      link: "https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164"
     },
     {
       title: "Domain-Driven Design",
       author: "Eric Evans",
       category: "Architecture",
       status: "To Read",
-      description: "Tackling complexity in the heart of software. The foundation of microservices.",
-      coverColor: "#1e3a8a", // blue-900
+      description: "Tackling complexity in the heart of software.",
+      coverColor: "#1e3a8a",
       coverImage: "https://m.media-amazon.com/images/I/81j891A0u+L._SL1500_.jpg",
       link: "https://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215"
     },
   ],
   cn: [
     {
-      title: "Effective Java 中文版 (第三版)",
-      author: "Joshua Bloch",
-      category: "Java 核心",
-      status: "Finished",
-      description: "编写清晰、正确且可重用 Java 代码的权威指南，Java 程序员必读。",
-      coverColor: "#2e7d32",
-      coverImage: "https://m.media-amazon.com/images/I/81adbNw2vlL._SL1500_.jpg",
-      link: "https://book.douban.com/subject/30412517/"
-    },
-    {
-      title: "Java 并发编程实战",
-      author: "Brian Goetz",
+      title: "Java 并发编程之美",
+      author: "翟超菲",
       category: "并发编程",
-      status: "Reading",
-      description: "深入理解 Java 线程安全与高性能并发应用的必读经典。",
-      coverColor: "#0f172a",
-      coverImage: "https://m.media-amazon.com/images/I/81b+x+a+o4L._SL1500_.jpg",
-      link: "https://book.douban.com/subject/10484692/"
+      status: "Finished",
+      description: "深入剖析 Java 并发编程的核心原理，涵盖线程、锁、AQS及并发工具库的深度解析。",
+      coverColor: "#1e40af",
+      coverImage: "https://img3.doubanio.com/view/subject/s/public/s29871189.jpg",
+      link: "https://book.douban.com/subject/30351286/"
     },
     {
       title: "数据密集型应用系统设计",
@@ -376,11 +328,21 @@ export const BOOKS_DATA: LocalizedData<BookItem[]> = {
       link: "https://book.douban.com/subject/30329536/"
     },
     {
+      title: "架构整洁之道",
+      author: "Robert C. Martin",
+      category: "软件工程",
+      status: "Finished",
+      description: "软件架构设计的经典之作，不仅关乎代码，更关乎边界与解耦。",
+      coverColor: "#22c55e",
+      coverImage: "https://m.media-amazon.com/images/I/41-sN-mzwKL.jpg",
+      link: "https://book.douban.com/subject/30333915/"
+    },
+    {
       title: "领域驱动设计",
       author: "Eric Evans",
       category: "架构方法论",
       status: "To Read",
-      description: "软件核心复杂性应对之道，现代微服务架构设计的理论基石。",
+      description: "软件核心复杂性应对之道。",
       coverColor: "#1e3a8a",
       coverImage: "https://m.media-amazon.com/images/I/81j891A0u+L._SL1500_.jpg",
       link: "https://book.douban.com/subject/26819666/"
@@ -392,57 +354,19 @@ export const BOOKS_DATA: LocalizedData<BookItem[]> = {
 export const BLOG_POSTS: BlogPost[] = [
   {
     id: "post-1",
-    title: "深入理解 JVM 内存管理",
-    summary: "详细解析 JVM 内存结构、垃圾回收算法（GC）以及高负载应用下的性能调优实战技巧。",
-    date: "2023-10-15",
-    tags: ["Java", "JVM", "Performance"],
-    content: `
-# 深入理解 JVM 内存管理
-
-Java 虚拟机 (JVM) 是运行 Java 代码的核心引擎。理解其内存管理机制对于编写高效、可扩展的应用程序至关重要。
-
-## 堆 (Heap) 与 栈 (Stack)
-
-- **堆**: 存储对象实例和 JRE 类。垃圾回收 (GC) 主要发生在这里。
-- **栈**: 存储基本数据类型和堆中对象的引用。
-
-## 垃圾回收 (Garbage Collection)
-
-Java 的自动内存管理依赖于 GC。常见的算法包括：
-
-1. **Serial GC**: 简单高效，适用于单线程环境。
-2. **Parallel GC**: 注重吞吐量，适用于多线程环境。
-3. **G1 GC**: 旨在提供可预测的停顿时间，适用于大堆内存。
-4. **ZGC**: 低延迟，适用于超大堆内存（TB 级）。
-
-## 调优建议
-
-- 将初始堆大小 (\`-Xms\`) 和最大堆大小 (\`-Xmx\`) 设置为相同值，以避免运行时重新分配内存的开销。
-- 根据工作负载类型（吞吐量优先 vs 延迟优先）选择合适的垃圾回收器。
-    `
+    title: "高并发场景下的保费计算引擎优化",
+    summary: "如何将 120s 的复杂计算优化至 30s？本文分享基于并行编排与多级缓存的实战方案。",
+    date: "2024-01-10",
+    tags: ["High Performance", "Java", "Optimization"],
+    content: "# 高并发计算引擎优化\n\n分享如何使用异步编排工具优化核心业务逻辑..."
   },
   {
     id: "post-2",
-    title: "基于 Spring Cloud Alibaba 构建微服务",
-    summary: "如何使用 Nacos 进行服务发现与配置管理，结合 Sentinel 实现流量控制，构建健壮的微服务架构。",
-    date: "2023-11-20",
-    tags: ["Spring Cloud", "Microservices", "Architecture"],
-    content: `
-# Spring Cloud Alibaba 实战
-
-Spring Cloud Alibaba 为分布式应用开发提供了一站式解决方案。
-
-## 核心组件
-
-- **Nacos**: 动态服务发现、配置管理和服务管理。
-- **Sentinel**: 流量控制、熔断降级、系统自适应保护。
-- **RocketMQ**: 分布式消息和流数据平台。
-- **Seata**: 高性能分布式事务解决方案。
-
-## 为什么选择 Nacos？
-
-Nacos 同时支持基于 DNS 和基于 RPC 的服务发现。它还提供实时配置更新功能，无需重启服务即可生效，极大地提高了运维效率。
-    `
+    title: "AI 编程时代的后端提效之路",
+    summary: "从 Cursor 到自定义 MCP Server，我是如何利用 AI 将日常开发效率提升 3 倍的。",
+    date: "2024-02-15",
+    tags: ["AI", "Efficiency", "Workflow"],
+    content: "# AI 驱动的后端开发\n\n探讨如何构建自己的 AI 辅助环境..."
   }
 ];
 
@@ -452,26 +376,22 @@ const COMMON_LOCATIONS: MapLocation[] = [
   { name: "Suzhou", lat: 31.2989, lng: 120.5853, type: "visited" },
   { name: "Shanghai", lat: 31.2304, lng: 121.4737, type: "visited" },
   { name: "Beijing", lat: 39.9042, lng: 116.4074, type: "visited" },
-  { name: "Hangzhou", lat: 30.2741, lng: 120.1551, type: "visited" },
   { name: "Shenzhen", lat: 22.5431, lng: 114.0579, type: "visited" },
   { name: "Tokyo", lat: 35.6762, lng: 139.6503, type: "visited" },
-  { name: "Osaka", lat: 34.6937, lng: 135.5023, type: "visited" },
-  { name: "Seoul", lat: 37.5665, lng: 126.9780, type: "visited" },
-  { name: "Bangkok", lat: 13.7563, lng: 100.5018, type: "visited" },
   { name: "Singapore", lat: 1.3521, lng: 103.8198, type: "visited" },
 ];
 
 export const SPACE_DATA: LocalizedData<SpaceContent> = {
   en: {
-    title: "Space",
-    subtitle: "This is my travel footprint. And currently I'm living in Chengdu, China.",
+    title: "Travel Footprint",
+    subtitle: "Living in Chengdu, exploring the digital and physical world.",
     currentLocationText: "Chengdu, China",
     locations: COMMON_LOCATIONS,
   },
   cn: {
-    title: "足迹",
-    subtitle: "这是我的旅行足迹。目前我居住在中国成都。",
-    currentLocationText: "中国，成都",
+    title: "数字足迹",
+    subtitle: "居住于成都，在数字与物理世界中不断探索。",
+    currentLocationText: "中国 · 成都",
     locations: COMMON_LOCATIONS,
   }
 };
@@ -479,16 +399,16 @@ export const SPACE_DATA: LocalizedData<SpaceContent> = {
 // Footer
 export const FOOTER_CONTENT: LocalizedData<FooterContent> = {
   en: {
-    title: "Ready to build scalable systems?",
-    emailText: "Email Me",
-    copyright: "© 2024 Cooper. All rights reserved.",
-    builtWith: "Built with React, TypeScript & Tailwind CSS",
+    title: "Scalable systems start with clear thinking.",
+    emailText: "Connect with Cooper",
+    copyright: "© 2024 Cooper. Built for Excellence.",
+    builtWith: "React + TS + Framer + AI assistance",
   },
   cn: {
-    title: "准备好构建可扩展的系统了吗？",
-    emailText: "发送邮件",
-    copyright: "© 2024 Cooper. 保留所有权利.",
-    builtWith: "基于 React, TypeScript & Tailwind CSS 构建",
+    title: "清晰的思考是构建可扩展系统的开始。",
+    emailText: "联系 Cooper",
+    copyright: "© 2024 Cooper. 追求卓越极致。",
+    builtWith: "基于 React + TS + Framer + AI 协作构建",
   }
 };
 

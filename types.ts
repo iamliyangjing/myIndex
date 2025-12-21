@@ -32,7 +32,13 @@ export interface LearningItem {
   topic: string;
   description: string;
   category: string;
-  }
+}
+
+export interface PrincipleItem {
+  title: string;
+  description: string;
+  icon: LucideIcon;
+}
 
 export interface BookItem {
   title: string;
@@ -91,7 +97,6 @@ export interface SpaceContent {
   locations: MapLocation[];
 }
 
-// Container for bilingual data
 export interface LocalizedData<T> {
   en: T;
   cn: T;
