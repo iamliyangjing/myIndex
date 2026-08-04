@@ -13,17 +13,17 @@ const StatusBadge: React.FC<{ status: BookItem['status'] }> = ({ status }) => {
     'Reading': { 
       icon: Clock, 
       text: t('Reading', '阅读中'), 
-      classes: 'bg-blue-100 text-blue-700 border-blue-200' 
+      classes: 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800' 
     },
     'Finished': { 
       icon: CheckCircle2, 
       text: t('Finished', '已读完'), 
-      classes: 'bg-emerald-100 text-emerald-700 border-emerald-200' 
+      classes: 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800' 
     },
     'To Read': { 
       icon: Hourglass, 
       text: t('To Read', '想读'), 
-      classes: 'bg-slate-100 text-slate-600 border-slate-200' 
+      classes: 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600' 
     },
   };
 
@@ -39,6 +39,7 @@ const StatusBadge: React.FC<{ status: BookItem['status'] }> = ({ status }) => {
 
 // 3D Book Component
 const ThreeDBook: React.FC<{ book: BookItem; index: number }> = ({ book, index }) => {
+  const { t } = useLanguage();
   // Dimensions for the 3D construction
   const width = 160;
   const height = 240;
@@ -150,14 +151,14 @@ const ThreeDBook: React.FC<{ book: BookItem; index: number }> = ({ book, index }
           <StatusBadge status={book.status} />
         </div>
         <h3 
-          className="font-bold text-slate-800 leading-tight mb-1 hover:text-primary cursor-pointer transition-colors"
+          className="font-bold text-slate-800 dark:text-slate-100 leading-tight mb-1 hover:text-primary cursor-pointer transition-colors"
           onClick={() => window.open(book.link, '_blank')}
         >
           {book.title}
         </h3>
-        <p className="text-sm text-slate-500 mb-2">{book.author}</p>
+        <p className="text-sm text-slate-500 dark:text-slate-400 mb-2">{book.author}</p>
         
-        <p className="text-xs text-slate-400 line-clamp-2 leading-relaxed">
+        <p className="text-xs text-slate-400 dark:text-slate-500 line-clamp-2 leading-relaxed">
           {book.description}
         </p>
         
@@ -168,7 +169,7 @@ const ThreeDBook: React.FC<{ book: BookItem; index: number }> = ({ book, index }
           className="inline-flex items-center text-xs text-primary font-medium mt-2 hover:underline"
         >
           <ExternalLink className="w-3 h-3 mr-1" />
-          Details
+          {t('Details', '详情')}
         </a>
       </div>
     </motion.div>
