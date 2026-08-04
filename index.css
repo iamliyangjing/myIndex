@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+/* Class-based dark mode (toggled by ThemeContext on <html>) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --color-primary: #1e3a8a; /* blue-900 (Navy) */
+  --color-primary-light: #3b82f6; /* blue-500 */
+  --color-primary-dark: #172554; /* blue-950 */
+  --color-accent-orange: #f97316; /* orange-500 */
+  --color-accent-green: #10b981; /* emerald-500 */
+
+  --animate-blob: blob 7s infinite;
+  --animate-card-in: card-in 0.7s ease-out both;
+
+  @keyframes blob {
+    0% {
+      transform: translate(0px, 0px) scale(1);
+    }
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+    100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+  }
+
+  @keyframes card-in {
+    from {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Custom scrollbar for webkit */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Markdown Styles */
+.markdown-body h1 { font-size: 1.75em; font-weight: 800; margin-bottom: 0.8em; color: #0f172a; margin-top: 1.5em; line-height: 1.2; }
+.markdown-body h1:first-child { margin-top: 0; }
+.markdown-body h2 { font-size: 1.4em; font-weight: 700; margin-top: 1.5em; margin-bottom: 0.6em; color: #1e293b; line-height: 1.3; }
+.markdown-body h3 { font-size: 1.2em; font-weight: 600; margin-top: 1.2em; margin-bottom: 0.5em; color: #334155; }
+.markdown-body p { margin-bottom: 1.2em; line-height: 1.75; color: #334155; }
+.markdown-body ul { list-style-type: disc; padding-left: 1.5em; margin-bottom: 1.2em; color: #334155; }
+.markdown-body ol { list-style-type: decimal; padding-left: 1.5em; margin-bottom: 1.2em; color: #334155; }
+.markdown-body li { margin-bottom: 0.4em; }
+.markdown-body code { background-color: #f1f5f9; padding: 0.2em 0.4em; border-radius: 0.25em; font-family: 'JetBrains Mono', monospace; font-size: 0.85em; color: #0ea5e9; border: 1px solid #e2e8f0; }
+.markdown-body pre { background-color: #0f172a; padding: 1em; border-radius: 0.5em; overflow-x: auto; margin-bottom: 1.5em; color: #f8fafc; border: 1px solid #1e293b; }
+.markdown-body pre code { background-color: transparent; color: inherit; padding: 0; border: none; font-size: 0.9em; }
+.markdown-body blockquote { border-left: 4px solid #3b82f6; padding-left: 1em; margin-left: 0; margin-right: 0; color: #475569; font-style: italic; background: #f8fafc; padding: 1em; border-radius: 0 0.5em 0.5em 0; }
+.markdown-body a { color: #2563eb; text-decoration: underline; text-underline-offset: 4px; }
+.markdown-body a:hover { color: #1d4ed8; }
+
+/* Dark mode markdown */
+.dark .markdown-body h1 { color: #f1f5f9; }
+.dark .markdown-body h2 { color: #e2e8f0; }
+.dark .markdown-body h3 { color: #cbd5e1; }
+.dark .markdown-body p { color: #cbd5e1; }
+.dark .markdown-body ul { color: #cbd5e1; }
+.dark .markdown-body ol { color: #cbd5e1; }
+.dark .markdown-body li { color: #cbd5e1; }
+.dark .markdown-body code { background-color: #1e293b; color: #38bdf8; border-color: #334155; }
+.dark .markdown-body blockquote { color: #94a3b8; background: #1e293b; border-left-color: #3b82f6; }
+.dark .markdown-body a { color: #38bdf8; }
+.dark .markdown-body a:hover { color: #0ea5e9; }
+
+/* Map Styles */
+.leaflet-container {
+  font-family: 'Inter', sans-serif;
+  background: #f8fafc !important;
+}
+.dark .leaflet-container {
+  background: #1e293b !important;
+}
+.custom-div-icon {
+  background: transparent;
+  border: none;
+}
+.pulse-ring {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(249, 115, 22, 0.4);
+  animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* Print Optimization Styles */
+@media print {
+  @page { margin: 1cm; size: auto; }
+  body { background: white; color: black; -webkit-print-color-adjust: exact; }
+  nav, footer, #space, button, .no-print { display: none !important; }
+  section { padding: 2rem 0 !important; break-inside: avoid; }
+  h1, h2, h3 { color: black !important; page-break-after: avoid; }
+  p, li { color: #333 !important; }
+  a { text-decoration: none !important; color: black !important; }
+  .shadow-lg, .shadow-xl, .shadow-2xl { box-shadow: none !important; }
+  .bg-slate-50, .bg-slate-900 { background: white !important; }
+  /* Ensure text contrast in print */
+  .text-slate-300, .text-slate-400, .text-slate-500 { color: #555 !important; }
+  /* Expand content to full width */
+  .max-w-7xl, .max-w-md { max-width: 100% !important; }
+}

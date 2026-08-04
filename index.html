@@ -5,151 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Java Backend Engineer - Portfolio</title>
     <meta name="description" content="Portfolio of a Senior Java Backend Engineer specializing in Distributed Systems." />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231e3a8a'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' font-weight='bold' fill='white' text-anchor='middle'%3E%3C/text%3E%3Ctext x='16' y='22' font-family='Arial' font-size='14' font-weight='bold' fill='%233b82f6' text-anchor='middle'%3EJ%3C/text%3E%3C/svg%3E"
+    />
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Java Backend Engineer - Portfolio" />
+    <meta property="og:description" content="Portfolio of a Senior Java Backend Engineer specializing in Distributed Systems." />
+    <meta property="og:image" content="https://api.dicebear.com/7.x/avataaars/svg?seed=JavaDev&backgroundColor=ffdfbf" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Java Backend Engineer - Portfolio" />
+    <meta name="twitter:description" content="Portfolio of a Senior Java Backend Engineer specializing in Distributed Systems." />
+    <meta name="twitter:image" content="https://api.dicebear.com/7.x/avataaars/svg?seed=JavaDev&backgroundColor=ffdfbf" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              mono: ['JetBrains Mono', 'monospace'],
-            },
-            colors: {
-              primary: {
-                DEFAULT: '#1e3a8a', // blue-900 (Navy)
-                light: '#3b82f6',   // blue-500
-                dark: '#172554',    // blue-950
-              },
-              accent: {
-                orange: '#f97316',  // orange-500
-                green: '#10b981',   // emerald-500
-              }
-            },
-            animation: {
-              'border-beam': 'border-beam calc(var(--duration)*1s) infinite linear',
-              'shine': 'shine 2s linear infinite',
-              'blob': 'blob 7s infinite',
-            },
-            keyframes: {
-              'border-beam': {
-                '100%': {
-                  'offset-distance': '100%',
-                },
-              },
-              'shine': {
-                'from': { 'background-position': '0 0' },
-                'to': { 'background-position': '-200% 0' }
-              },
-              blob: {
-                "0%": {
-                  transform: "translate(0px, 0px) scale(1)",
-                },
-                "33%": {
-                  transform: "translate(30px, -50px) scale(1.1)",
-                },
-                "66%": {
-                  transform: "translate(-20px, 20px) scale(0.9)",
-                },
-                "100%": {
-                  transform: "translate(0px, 0px) scale(1)",
-                },
-              },
-            },
-          }
-        }
-      }
-    </script>
-    <style>
-      /* Custom scrollbar for webkit */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #f1f5f9;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #94a3b8;
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #64748b;
-      }
-      
-      /* Markdown Styles */
-      .markdown-body h1 { font-size: 1.75em; font-weight: 800; margin-bottom: 0.8em; color: #0f172a; margin-top: 1.5em; line-height: 1.2; }
-      .markdown-body h1:first-child { margin-top: 0; }
-      .markdown-body h2 { font-size: 1.4em; font-weight: 700; margin-top: 1.5em; margin-bottom: 0.6em; color: #1e293b; line-height: 1.3; }
-      .markdown-body h3 { font-size: 1.2em; font-weight: 600; margin-top: 1.2em; margin-bottom: 0.5em; color: #334155; }
-      .markdown-body p { margin-bottom: 1.2em; line-height: 1.75; color: #334155; }
-      .markdown-body ul { list-style-type: disc; padding-left: 1.5em; margin-bottom: 1.2em; color: #334155; }
-      .markdown-body ol { list-style-type: decimal; padding-left: 1.5em; margin-bottom: 1.2em; color: #334155; }
-      .markdown-body li { margin-bottom: 0.4em; }
-      .markdown-body code { background-color: #f1f5f9; padding: 0.2em 0.4em; border-radius: 0.25em; font-family: 'JetBrains Mono', monospace; font-size: 0.85em; color: #0ea5e9; border: 1px solid #e2e8f0; }
-      .markdown-body pre { background-color: #0f172a; padding: 1em; border-radius: 0.5em; overflow-x: auto; margin-bottom: 1.5em; color: #f8fafc; border: 1px solid #1e293b; }
-      .markdown-body pre code { background-color: transparent; color: inherit; padding: 0; border: none; font-size: 0.9em; }
-      .markdown-body blockquote { border-left: 4px solid #3b82f6; padding-left: 1em; margin-left: 0; margin-right: 0; color: #475569; font-style: italic; background: #f8fafc; padding: 1em; border-radius: 0 0.5em 0.5em 0; }
-      .markdown-body a { color: #2563eb; text-decoration: underline; text-underline-offset: 4px; }
-      .markdown-body a:hover { color: #1d4ed8; }
-
-      /* Map Styles */
-      .leaflet-container {
-        font-family: 'Inter', sans-serif;
-        background: #f8fafc !important;
-      }
-      .custom-div-icon {
-        background: transparent;
-        border: none;
-      }
-      .pulse-ring {
-        display: block;
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        background: rgba(249, 115, 22, 0.4);
-        animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-      }
-      @keyframes pulse-ring {
-        0% { transform: scale(0.8); opacity: 1; }
-        100% { transform: scale(2.5); opacity: 0; }
-      }
-
-      /* Print Optimization Styles */
-      @media print {
-        @page { margin: 1cm; size: auto; }
-        body { background: white; color: black; -webkit-print-color-adjust: exact; }
-        nav, footer, #space, button, .no-print { display: none !important; }
-        section { padding: 2rem 0 !important; break-inside: avoid; }
-        h1, h2, h3 { color: black !important; page-break-after: avoid; }
-        p, li { color: #333 !important; }
-        a { text-decoration: none !important; color: black !important; }
-        .shadow-lg, .shadow-xl, .shadow-2xl { box-shadow: none !important; }
-        .bg-slate-50, .bg-slate-900 { background: white !important; }
-        /* Ensure text contrast in print */
-        .text-slate-300, .text-slate-400, .text-slate-500 { color: #555 !important; }
-        /* Expand content to full width */
-        .max-w-7xl, .max-w-md { max-width: 100% !important; }
-      }
-    </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@18.2.0",
-    "react/": "https://esm.sh/react@18.2.0/",
-    "react-dom": "https://esm.sh/react-dom@18.2.0",
-    "react-dom/": "https://esm.sh/react-dom@18.2.0/",
-    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
-    "lucide-react": "https://esm.sh/lucide-react@0.263.1?deps=react@18.2.0",
-    "framer-motion": "https://esm.sh/framer-motion@10.16.4?deps=react@18.2.0,react-dom@18.2.0",
-    "react-markdown": "https://esm.sh/react-markdown@9.0.1?deps=react@18.2.0,react-dom@18.2.0",
-    "leaflet": "https://esm.sh/leaflet@1.9.4"
-  }
-}
-</script>
-</head>
+  </head>
   <body class="bg-slate-50 text-slate-900 antialiased overflow-x-hidden">
     <div id="root"></div>
     <script type="module" src="./index.tsx"></script>
