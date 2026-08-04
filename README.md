@@ -2,19 +2,39 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# Run and deploy your AI Studio app
+# Java Backend Engineer Portfolio
 
-This contains everything you need to run your app locally.
+A professional, responsive personal portfolio website for a Senior Java Backend Engineer. Built with React, TypeScript, Tailwind CSS (v4) and Vite.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1FOf-ISNQRPuvf6_FiMF2dRC6-pvU-NF1
+## Features
+
+- **Bilingual (EN/CN)**: Language toggle with localStorage persistence and system-language detection
+- **Dark / Light theme**: Follows system preference, overridable, persisted
+- **Sections**: Hero, Skills, Experience, Learning, Books (3D), Blog, Travel Map (Leaflet)
+- **Print-optimized**: The page doubles as a printable resume
 
 ## Run Locally
 
-**Prerequisites:**  Node.js
-
+**Prerequisites:** Node.js 18+
 
 1. Install dependencies:
    `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
+2. Run the app:
    `npm run dev`
+
+The dev server starts at `http://localhost:3000`.
+
+## Scripts
+
+| Script | Description |
+|---|---|
+| `npm run dev` | Start the Vite dev server |
+| `npm run build` | Build for production into `dist/` |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint |
+| `npm run typecheck` | Run TypeScript type checking (`tsc --noEmit`) |
+| `npm test` | Run Vitest unit tests |
+
+## Customize
+
+All site content (profile, skills, experience, books, blog posts, contact info) lives in [constants.ts](constants.ts). Replace the placeholder contact details there with your own.
