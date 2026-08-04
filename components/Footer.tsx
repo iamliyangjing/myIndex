@@ -37,7 +37,9 @@ const Footer: React.FC = () => {
           </a>
 
            <a 
-            href="#"
+            href={CONTACT_INFO.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group flex flex-col items-center justify-center p-3 md:p-4 rounded-xl hover:bg-slate-800 transition-colors"
           >
             <div className="p-3 bg-slate-800 rounded-full group-hover:bg-[#0077b5] mb-2 md:mb-3 transition-colors">

@@ -10,7 +10,7 @@ import {
   GraduationCap,
   Download
 } from 'lucide-react';
-import { PROFILE_DATA, HERO_CONTENT } from '../constants';
+import { PROFILE_DATA, HERO_CONTENT, RESUME_URL } from '../constants';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Hero: React.FC = () => {
@@ -25,6 +25,14 @@ const Hero: React.FC = () => {
     }
   };
 
+  const handleDownloadResume = () => {
+    if (RESUME_URL) {
+      window.open(RESUME_URL, '_blank', 'noopener,noreferrer');
+    } else {
+      window.alert(t("Resume is not available yet.", "简历暂未上传，敬请期待。"));
+    }
+  };
+
   // Orbital animations config
   const orbitalIcons = [
     { icon: Coffee, color: "text-orange-500", delay: 0, radius: 200, duration: 25 },
@@ -35,23 +43,23 @@ const Hero: React.FC = () => {
   ];
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center bg-slate-50 overflow-hidden pt-20 pb-10 md:py-0 print:pt-4 print:min-h-0 print:block print:h-auto">
+    <div className="relative min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-900 overflow-hidden pt-20 pb-10 md:py-0 print:pt-4 print:min-h-0 print:block print:h-auto">
       
       {/* Dynamic Background Elements - Hidden in Print & Simplified on Mobile */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none print:hidden">
         {/* Large faint gradient blob - Hidden on Mobile for performance/clarity */}
-        <div className="hidden md:block absolute top-1/4 -right-20 w-[600px] h-[600px] bg-blue-100 rounded-full mix-blend-multiply filter blur-[80px] opacity-70 animate-blob" />
+        <div className="hidden md:block absolute top-1/4 -right-20 w-[600px] h-[600px] bg-blue-100 dark:bg-blue-900/30 rounded-full mix-blend-multiply filter blur-[80px] opacity-70 animate-blob" />
         <div 
-          className="hidden md:block absolute -bottom-20 -left-20 w-[600px] h-[600px] bg-purple-100 rounded-full mix-blend-multiply filter blur-[80px] opacity-70 animate-blob"
+          className="hidden md:block absolute -bottom-20 -left-20 w-[600px] h-[600px] bg-purple-100 dark:bg-purple-900/30 rounded-full mix-blend-multiply filter blur-[80px] opacity-70 animate-blob"
           style={{ animationDelay: '2s' }}
         />
         
         {/* Orbital Rings (SVG) - Hidden on Mobile to reduce clutter */}
         <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] opacity-20">
           <svg viewBox="0 0 1200 1200" className="w-full h-full animate-[spin_60s_linear_infinite]">
-            <circle cx="600" cy="600" r="200" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="8 8" className="text-slate-400" />
-            <circle cx="600" cy="600" r="350" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="12 12" className="text-slate-400" />
-            <circle cx="600" cy="600" r="500" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="16 16" className="text-slate-300" />
+            <circle cx="600" cy="600" r="200" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="8 8" className="text-slate-400 dark:text-slate-600" />
+            <circle cx="600" cy="600" r="350" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="12 12" className="text-slate-400 dark:text-slate-600" />
+            <circle cx="600" cy="600" r="500" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="16 16" className="text-slate-300 dark:text-slate-700" />
           </svg>
         </div>
 
@@ -67,7 +75,7 @@ const Hero: React.FC = () => {
               style={{ width: item.radius * 2, height: item.radius * 2, x: '-50%', y: '-50%' }}
             >
               <motion.div 
-                className={`absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 bg-white rounded-full shadow-lg border border-slate-100 ${item.color}`}
+                className={`absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 bg-white dark:bg-slate-800 rounded-full shadow-lg border border-slate-100 dark:border-slate-700 ${item.color}`}
                 whileHover={{ scale: 1.2 }}
               >
                 <Icon className="w-6 h-6" />
@@ -84,7 +92,7 @@ const Hero: React.FC = () => {
         transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
         className="relative z-10 w-full max-w-[90%] md:max-w-md mx-auto print:max-w-none print:px-0 print:shadow-none"
       >
-        <div className="relative bg-white/80 backdrop-blur-xl rounded-[2rem] shadow-2xl border border-white/50 p-6 md:p-8 text-center print:bg-transparent print:shadow-none print:border-none print:p-0">
+        <div className="relative bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-[2rem] shadow-2xl border border-white/50 dark:border-slate-700/50 p-6 md:p-8 text-center print:bg-transparent print:shadow-none print:border-none print:p-0">
           
           {/* Avatar Section */}
           <div className="absolute -top-12 md:-top-16 left-1/2 transform -translate-x-1/2 print:relative print:top-auto print:left-auto print:translate-x-0 print:mx-auto print:mb-4">
@@ -94,7 +102,7 @@ const Hero: React.FC = () => {
               
               {/* Spinning Avatar Container */}
               <motion.div 
-                className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg bg-white relative z-10"
+                className="w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-slate-700 shadow-lg bg-white dark:bg-slate-800 relative z-10"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                 style={{ rotate: 0 }} 
@@ -113,7 +121,7 @@ const Hero: React.FC = () => {
           </div>
 
           <div className="mt-12 md:mt-16 print:mt-0">
-            <div className="flex items-center justify-center space-x-2 text-slate-500 text-sm font-medium mb-1 print:hidden">
+            <div className="flex items-center justify-center space-x-2 text-slate-500 dark:text-slate-400 text-sm font-medium mb-1 print:hidden">
               <span>{t("Hello, I'm:", "你好，我是：")}</span>
             </div>
             
@@ -129,10 +137,10 @@ const Hero: React.FC = () => {
               </motion.h1>
             </div>
 
-            <p className="text-lg md:text-xl text-slate-700 font-semibold mb-2">{content.role}</p>
-            <p className="text-xs md:text-sm text-slate-500 mb-6 print:mb-4 px-4">{content.subRole}</p>
+            <p className="text-lg md:text-xl text-slate-700 dark:text-slate-300 font-semibold mb-2">{content.role}</p>
+            <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 mb-6 print:mb-4 px-4">{content.subRole}</p>
 
-            <hr className="border-slate-100 w-1/2 mx-auto mb-6 print:hidden" />
+            <hr className="border-slate-100 dark:border-slate-700 w-1/2 mx-auto mb-6 print:hidden" />
 
             {/* Buttons Row */}
             <div className="flex flex-wrap gap-3 justify-center mb-8 print:hidden">
@@ -144,8 +152,8 @@ const Hero: React.FC = () => {
               </button>
               
               <button
-                onClick={() => window.alert("Resume download simulation")} 
-                className="px-5 py-2 md:px-6 md:py-2.5 bg-white text-slate-700 text-sm md:text-base border border-slate-200 rounded-full font-semibold shadow-sm hover:bg-slate-50 hover:border-slate-300 hover:scale-105 transition-all active:scale-95 flex items-center gap-2"
+                onClick={handleDownloadResume}
+                className="px-5 py-2 md:px-6 md:py-2.5 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm md:text-base border border-slate-200 dark:border-slate-700 rounded-full font-semibold shadow-sm hover:bg-slate-50 dark:hover:bg-slate-700 hover:border-slate-300 dark:hover:border-slate-600 hover:scale-105 transition-all active:scale-95 flex items-center gap-2"
               >
                 <Download className="w-4 h-4" />
                 {content.downloadText}
@@ -154,22 +162,22 @@ const Hero: React.FC = () => {
 
             <div className="text-left space-y-4 print:space-y-2">
                {/* Graduation Info */}
-              <div className="flex items-start text-slate-600 bg-slate-50 p-3 rounded-xl print:bg-transparent print:p-0 print:border print:border-slate-200">
-                 <div className="p-2 bg-white rounded-lg shadow-sm mr-3 print:hidden">
+              <div className="flex items-start text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-700/50 p-3 rounded-xl print:bg-transparent print:p-0 print:border print:border-slate-200">
+                 <div className="p-2 bg-white dark:bg-slate-800 rounded-lg shadow-sm mr-3 print:hidden">
                     <GraduationCap className="w-5 h-5 text-blue-500" />
                  </div>
                  <div>
-                    <p className="text-xs text-slate-400 font-semibold uppercase tracking-wider print:text-black">{t("Education", "教育背景")}</p>
-                    <p className="font-bold text-slate-800 text-sm md:text-base">{profile.university}</p>
-                    <p className="text-xs md:text-sm text-slate-500">{profile.gradYear}</p>
+                    <p className="text-xs text-slate-400 dark:text-slate-500 font-semibold uppercase tracking-wider print:text-black">{t("Education", "教育背景")}</p>
+                    <p className="font-bold text-slate-800 dark:text-slate-200 text-sm md:text-base">{profile.university}</p>
+                    <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400">{profile.gradYear}</p>
                  </div>
               </div>
 
               {/* Roles List */}
-              <div className="bg-slate-50 p-4 rounded-xl print:bg-transparent print:p-0">
+              <div className="bg-slate-50 dark:bg-slate-700/50 p-4 rounded-xl print:bg-transparent print:p-0">
                 <div className="flex items-center mb-3 print:hidden">
-                  <Globe className="w-4 h-4 text-slate-400 mr-2" />
-                  <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider">{t("My Roles", "我的角色")}</span>
+                  <Globe className="w-4 h-4 text-slate-400 dark:text-slate-500 mr-2" />
+                  <span className="text-xs text-slate-400 dark:text-slate-500 font-semibold uppercase tracking-wider">{t("My Roles", "我的角色")}</span>
                 </div>
                 <ul className="space-y-2 print:grid print:grid-cols-2 print:gap-2">
                   {profile.roles.map((role, idx) => (
@@ -178,7 +186,7 @@ const Hero: React.FC = () => {
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.1 + (idx * 0.1) }}
-                      className="text-slate-700 font-medium flex items-center text-sm md:text-base"
+                      className="text-slate-700 dark:text-slate-300 font-medium flex items-center text-sm md:text-base"
                     >
                       <span className="w-1.5 h-1.5 rounded-full bg-orange-400 mr-3 print:bg-black" />
                       {role}

@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Code2, Menu, X, ExternalLink, Globe } from 'lucide-react';
+import { Code2, Menu, X, ExternalLink, Globe, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BLOG_URL } from '../constants';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { language, toggleLanguage, t } = useLanguage();
+  const { isDark, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,7 +41,7 @@ const Navbar: React.FC = () => {
   return (
     <nav 
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-3 md:py-4' : 'bg-transparent py-4 md:py-6'
+        isScrolled ? 'bg-white/95 dark:bg-slate-900/90 backdrop-blur-md shadow-md py-3 md:py-4' : 'bg-transparent py-4 md:py-6'
       }`}
     >
       {/* Width matched with Section.tsx */}
@@ -99,6 +101,21 @@ const Navbar: React.FC = () => {
             {language === 'en' ? 'EN' : 'CN'}
           </button>
 
+          {/* Theme Toggle */}
+          <motion.button
+            onClick={toggleTheme}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className={`p-2 rounded-full border transition-all ${
+              isScrolled 
+                ? 'border-slate-200 text-slate-600 hover:border-slate-400 hover:bg-slate-100' 
+                : 'border-white/20 text-white/80 hover:bg-white/10'
+            }`}
+            title={isDark ? t('Switch to light mode', '切换到浅色模式') : t('Switch to dark mode', '切换到深色模式')}
+          >
+            {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+          </motion.button>
+
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -115,6 +132,19 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center gap-3">
+          {/* Theme Toggle Mobile */}
+          <button
+            onClick={toggleTheme}
+            className={`p-2 rounded-full border transition-all ${
+              isScrolled 
+                ? 'border-slate-200 text-slate-600' 
+                : 'border-white/20 text-white/80'
+            }`}
+            title={isDark ? t('Switch to light mode', '切换到浅色模式') : t('Switch to dark mode', '切换到深色模式')}
+          >
+            {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+          </button>
+          
           <button
             onClick={toggleLanguage}
             className={`flex items-center gap-1 text-xs font-bold px-2 py-1 rounded border transition-all ${
@@ -128,7 +158,7 @@ const Navbar: React.FC = () => {
           
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`p-2 rounded-md ${isScrolled ? 'text-slate-900' : 'text-white'}`}
+            className={`p-2 rounded-md ${isScrolled ? 'text-slate-900 dark:text-slate-100' : 'text-white'}`}
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -142,7 +172,7 @@ const Navbar: React.FC = () => {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 shadow-xl overflow-hidden"
+            className="md:hidden absolute top-full left-0 w-full bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 shadow-xl overflow-hidden"
           >
             <div className="flex flex-col p-6 space-y-4">
               {navLinks.map((link) => (
