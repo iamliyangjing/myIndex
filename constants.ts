@@ -3,7 +3,6 @@ import {
   Database, 
   Cloud, 
   Code, 
-  Terminal, 
   ShieldCheck,
   Sparkles,
   Zap,
@@ -17,7 +16,7 @@ import { ExperienceItem, LearningItem, SkillCategory, BookItem, LocalizedData, P
 // Profile Data
 export const PROFILE_DATA: LocalizedData<ProfileData> = {
   en: {
-    avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=CodeCraft&backgroundColor=ffdfbf",
+    avatarUrl: "/avatar.svg",
     name: "Cooper",
     university: "Southwest Petroleum University",
     gradYear: "Class of 2023",
@@ -28,7 +27,7 @@ export const PROFILE_DATA: LocalizedData<ProfileData> = {
     ]
   },
   cn: {
-    avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=CodeCraft&backgroundColor=ffdfbf",
+    avatarUrl: "/avatar.svg",
     name: "Cooper",
     university: "西南石油大学",
     gradYear: "2023届",
@@ -282,7 +281,7 @@ export const BOOKS_DATA: LocalizedData<BookItem[]> = {
       status: "Finished",
       description: "The 'Bible' of distributed systems. Deep understanding of replication and transactions.",
       coverColor: "#b91c1c",
-      coverImage: "https://m.media-amazon.com/images/I/91rr3BPljHL._SL1500_.jpg",
+      coverImage: "/books/ddia.svg",
       link: "https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321"
     },
     {
@@ -302,7 +301,7 @@ export const BOOKS_DATA: LocalizedData<BookItem[]> = {
       status: "To Read",
       description: "Tackling complexity in the heart of software.",
       coverColor: "#1e3a8a",
-      coverImage: "https://m.media-amazon.com/images/I/81j891A0u+L._SL1500_.jpg",
+      coverImage: "/books/ddd.svg",
       link: "https://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215"
     },
   ],
@@ -324,7 +323,7 @@ export const BOOKS_DATA: LocalizedData<BookItem[]> = {
       status: "Finished",
       description: "被誉为分布式系统的“圣经”，深入理解复制、分区和事务的底层原理。",
       coverColor: "#b91c1c",
-      coverImage: "https://m.media-amazon.com/images/I/91rr3BPljHL._SL1500_.jpg",
+      coverImage: "/books/ddia.svg",
       link: "https://book.douban.com/subject/30329536/"
     },
     {
@@ -344,31 +343,51 @@ export const BOOKS_DATA: LocalizedData<BookItem[]> = {
       status: "To Read",
       description: "软件核心复杂性应对之道。",
       coverColor: "#1e3a8a",
-      coverImage: "https://m.media-amazon.com/images/I/81j891A0u+L._SL1500_.jpg",
+      coverImage: "/books/ddd.svg",
       link: "https://book.douban.com/subject/26819666/"
     },
   ]
 };
 
 // Blog Posts
-export const BLOG_POSTS: BlogPost[] = [
-  {
-    id: "post-1",
-    title: "高并发场景下的保费计算引擎优化",
-    summary: "如何将 120s 的复杂计算优化至 30s？本文分享基于并行编排与多级缓存的实战方案。",
-    date: "2024-01-10",
-    tags: ["High Performance", "Java", "Optimization"],
-    content: "# 高并发计算引擎优化\n\n分享如何使用异步编排工具优化核心业务逻辑..."
-  },
-  {
-    id: "post-2",
-    title: "AI 编程时代的后端提效之路",
-    summary: "从 Cursor 到自定义 MCP Server，我是如何利用 AI 将日常开发效率提升 3 倍的。",
-    date: "2024-02-15",
-    tags: ["AI", "Efficiency", "Workflow"],
-    content: "# AI 驱动的后端开发\n\n探讨如何构建自己的 AI 辅助环境..."
-  }
-];
+export const BLOG_POSTS: LocalizedData<BlogPost[]> = {
+  en: [
+    {
+      id: "post-1",
+      title: "Optimizing a Premium Calculation Engine for High Concurrency",
+      summary: "How to cut a 120s complex calculation down to 30s? A practical approach based on parallel orchestration and multi-level caching.",
+      date: "2024-01-10",
+      tags: ["High Performance", "Java", "Optimization"],
+      content: "# High-Concurrency Calculation Engine Optimization\n\nSharing how to optimize core business logic with async orchestration..."
+    },
+    {
+      id: "post-2",
+      title: "Boosting Backend Productivity in the AI Era",
+      summary: "From Cursor to custom MCP Servers — how I used AI to triple my daily development efficiency.",
+      date: "2024-02-15",
+      tags: ["AI", "Efficiency", "Workflow"],
+      content: "# AI-Driven Backend Development\n\nExploring how to build your own AI-assisted environment..."
+    }
+  ],
+  cn: [
+    {
+      id: "post-1",
+      title: "高并发场景下的保费计算引擎优化",
+      summary: "如何将 120s 的复杂计算优化至 30s？本文分享基于并行编排与多级缓存的实战方案。",
+      date: "2024-01-10",
+      tags: ["High Performance", "Java", "Optimization"],
+      content: "# 高并发计算引擎优化\n\n分享如何使用异步编排工具优化核心业务逻辑..."
+    },
+    {
+      id: "post-2",
+      title: "AI 编程时代的后端提效之路",
+      summary: "从 Cursor 到自定义 MCP Server，我是如何利用 AI 将日常开发效率提升 3 倍的。",
+      date: "2024-02-15",
+      tags: ["AI", "Efficiency", "Workflow"],
+      content: "# AI 驱动的后端开发\n\n探讨如何构建自己的 AI 辅助环境..."
+    }
+  ]
+};
 
 // Locations
 const COMMON_LOCATIONS: MapLocation[] = [
@@ -413,8 +432,13 @@ export const FOOTER_CONTENT: LocalizedData<FooterContent> = {
 };
 
 // External Links
-export const BLOG_URL = "https://juejin.cn";
+export const BLOG_URL = "http://47.113.206.49/blog/";
+
+// TODO: Add your LinkedIn profile URL and resume file to complete this section.
 export const CONTACT_INFO = {
   email: "958390434@qq.com",
   github: "https://github.com/iamliyangjing",
+  linkedin: "https://www.linkedin.com/in/yourusername",
 };
+
+export const RESUME_URL = "";

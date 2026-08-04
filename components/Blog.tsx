@@ -5,41 +5,46 @@ import { BlogPost } from '../types';
 import { Calendar, FileText, Tag, X } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '../contexts/LanguageContext';
 
-const BlogCard: React.FC<{ post: BlogPost; onClick: () => void; index: number }> = ({ post, onClick, index }) => (
-  <motion.div 
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ delay: index * 0.1 }}
-    viewport={{ once: true }}
-    onClick={onClick}
-    className="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 cursor-pointer group hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-  >
-    <div className="p-6">
-      <div className="flex items-center text-sm text-slate-400 mb-3">
-        <Calendar className="w-4 h-4 mr-2" />
-        {post.date}
+const BlogCard: React.FC<{ post: BlogPost; onClick: () => void; index: number }> = ({ post, onClick, index }) => {
+  const { t } = useLanguage();
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1 }}
+      viewport={{ once: true }}
+      onClick={onClick}
+      className="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 cursor-pointer group hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+    >
+      <div className="p-6">
+        <div className="flex items-center text-sm text-slate-400 mb-3">
+          <Calendar className="w-4 h-4 mr-2" />
+          {post.date}
+        </div>
+        <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">
+          {post.title}
+        </h3>
+        <p className="text-slate-600 mb-4 line-clamp-2">
+          {post.summary}
+        </p>
+        <div className="flex flex-wrap gap-2 mb-4">
+          {post.tags.map(tag => (
+            <span key={tag} className="inline-flex items-center text-xs px-2 py-1 bg-slate-50 text-slate-600 rounded">
+              <Tag className="w-3 h-3 mr-1" />
+              {tag}
+            </span>
+          ))}
+        </div>
+        <div className="text-primary font-medium text-sm flex items-center group-hover:translate-x-1 transition-transform">
+          {t('Read More', '阅读全文')} <FileText className="w-4 h-4 ml-1" />
+        </div>
       </div>
-      <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">
-        {post.title}
-      </h3>
-      <p className="text-slate-600 mb-4 line-clamp-2">
-        {post.summary}
-      </p>
-      <div className="flex flex-wrap gap-2 mb-4">
-        {post.tags.map(tag => (
-          <span key={tag} className="inline-flex items-center text-xs px-2 py-1 bg-slate-50 text-slate-600 rounded">
-            <Tag className="w-3 h-3 mr-1" />
-            {tag}
-          </span>
-        ))}
-      </div>
-      <div className="text-primary font-medium text-sm flex items-center group-hover:translate-x-1 transition-transform">
-        阅读全文 <FileText className="w-4 h-4 ml-1" />
-      </div>
-    </div>
-  </motion.div>
-);
+    </motion.div>
+  );
+};
 
 const BlogModal: React.FC<{ post: BlogPost; onClose: () => void }> = ({ post, onClose }) => {
   // Close on Escape key
@@ -97,17 +102,22 @@ const BlogModal: React.FC<{ post: BlogPost; onClose: () => void }> = ({ post, on
 
 const Blog: React.FC = () => {
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
+  const { language, t } = useLanguage();
+  const posts = BLOG_POSTS[language];
 
   return (
     <>
       <Section 
         id="blog" 
-        title="技术博客" 
-        subtitle="分享技术见解，记录成长点滴。"
+        title={t("Tech Blog", "技术博客")} 
+        subtitle={t(
+          "Sharing technical insights and recording the journey of growth.",
+          "分享技术见解，记录成长点滴。"
+        )}
         lightBackground
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {BLOG_POSTS.map((post, index) => (
+          {posts.map((post, index) => (
             <BlogCard 
               key={post.id} 
               post={post} 
