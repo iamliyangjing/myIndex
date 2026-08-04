@@ -25,8 +25,8 @@ const ExperienceCard: React.FC<{ item: ExperienceItem; index: number }> = ({ ite
             <Calendar className="w-4 h-4 mr-2" />
             {item.period}
           </div>
-          <h3 className="text-xl font-bold text-slate-900 group-hover:text-primary transition-colors">{item.company}</h3>
-          <p className="text-slate-500 font-medium">{item.role}</p>
+          <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 group-hover:text-primary transition-colors">{item.company}</h3>
+          <p className="text-slate-500 dark:text-slate-400 font-medium">{item.role}</p>
         </div>
 
         {/* Timeline Center Line */}
@@ -35,20 +35,20 @@ const ExperienceCard: React.FC<{ item: ExperienceItem; index: number }> = ({ ite
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             transition={{ type: "spring", stiffness: 300, delay: index * 0.2 }}
-            className="w-4 h-4 rounded-full border-4 border-slate-200 bg-white group-hover:border-primary-light group-hover:scale-125 transition-all z-10" 
+            className="w-4 h-4 rounded-full border-4 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 group-hover:border-primary-light group-hover:scale-125 transition-all z-10" 
           />
-          <div className="w-0.5 h-full bg-slate-200 -mt-2 group-hover:bg-slate-300 transition-colors" />
+          <div className="w-0.5 h-full bg-slate-200 dark:bg-slate-700 -mt-2 group-hover:bg-slate-300 dark:group-hover:bg-slate-600 transition-colors" />
         </div>
 
         {/* Right Side: Details */}
         <div className="md:w-2/3 md:pl-12 pb-16">
           <div className="md:hidden mb-4">
             <span className="text-sm font-bold text-primary-light uppercase tracking-wider mb-1 block">{item.period}</span>
-            <h3 className="text-xl font-bold text-slate-900">{item.company}</h3>
-            <p className="text-slate-500 font-medium">{item.role}</p>
+            <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100">{item.company}</h3>
+            <p className="text-slate-500 dark:text-slate-400 font-medium">{item.role}</p>
           </div>
 
-          <p className="text-slate-600 mb-6 leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
             {item.description}
           </p>
 
@@ -63,7 +63,7 @@ const ExperienceCard: React.FC<{ item: ExperienceItem; index: number }> = ({ ite
                 viewport={{ once: true }}
               >
                 <CheckCircle className="w-5 h-5 text-accent-green mt-0.5 mr-3 flex-shrink-0" />
-                <span className="text-slate-700">{achievement}</span>
+                <span className="text-slate-700 dark:text-slate-300">{achievement}</span>
               </motion.div>
             ))}
           </div>
@@ -71,9 +71,9 @@ const ExperienceCard: React.FC<{ item: ExperienceItem; index: number }> = ({ ite
           {item.projects && item.projects.length > 0 && (
             <div className="grid grid-cols-1 gap-4">
               {item.projects.map((project, pIndex) => (
-                <div key={pIndex} className="bg-slate-50 border border-slate-200 rounded-lg p-5 hover:border-primary-light/50 transition-colors hover:bg-white hover:shadow-sm">
+                <div key={pIndex} className="bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-5 hover:border-primary-light/50 transition-colors hover:bg-white dark:hover:bg-slate-700 hover:shadow-sm">
                   <div className="flex items-center justify-between mb-2">
-                    <h4 className="font-bold text-slate-800 flex items-center">
+                    <h4 className="font-bold text-slate-800 dark:text-slate-100 flex items-center">
                       <GitBranch className="w-4 h-4 mr-2 text-primary" />
                       {project.name}
                     </h4>
@@ -83,10 +83,10 @@ const ExperienceCard: React.FC<{ item: ExperienceItem; index: number }> = ({ ite
                       </a>
                     )}
                   </div>
-                  <p className="text-sm text-slate-600 mb-3">{project.description}</p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">{project.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {project.technologies.map(tech => (
-                      <span key={tech} className="text-xs px-2 py-1 bg-white border border-slate-200 rounded text-slate-600">
+                      <span key={tech} className="text-xs px-2 py-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded text-slate-600 dark:text-slate-400">
                         {tech}
                       </span>
                     ))}

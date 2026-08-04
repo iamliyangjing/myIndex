@@ -36,24 +36,24 @@ const Learning: React.FC = () => {
             whileHover={{ y: -5 }}
             transition={{ duration: 0.3, delay: index * 0.1 }}
             viewport={{ once: true }}
-            className="group relative bg-white p-6 rounded-lg border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
+            className="group relative bg-white dark:bg-slate-800 p-6 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
           >
             {/* Background Gradient Animation on Hover */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary-light/5 via-accent-orange/5 to-accent-green/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             
             <div className="relative z-10">
               <div className="flex items-center justify-between mb-4">
-                <span className={`text-xs font-bold px-2 py-1 rounded bg-slate-100 text-slate-600 uppercase tracking-wide group-hover:bg-white/80 transition-colors`}>
+                <span className={`text-xs font-bold px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 uppercase tracking-wide group-hover:bg-white/80 dark:group-hover:bg-slate-600 transition-colors`}>
                   {item.category}
                 </span>
                 <div className="transform group-hover:scale-110 transition-transform duration-300">
                   {getIcon(item.category)}
                 </div>
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">
+              <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2 group-hover:text-primary transition-colors">
                 {item.topic}
               </h3>
-              <p className="text-slate-600 text-sm">
+              <p className="text-slate-600 dark:text-slate-400 text-sm">
                 {item.description}
               </p>
             </div>

@@ -14,25 +14,25 @@ const SkillCard: React.FC<{ category: SkillCategory; index: number }> = ({ categ
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
       viewport={{ once: true }}
-      className="bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group relative overflow-hidden"
+      className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group relative overflow-hidden"
     >
       <div className="absolute inset-0 bg-gradient-to-br from-primary-light/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
       <div className="flex items-center mb-6 relative z-10">
-        <div className="p-3 bg-slate-50 rounded-lg group-hover:bg-primary-light/10 transition-colors">
-          <Icon className="w-6 h-6 text-slate-600 group-hover:text-primary-light transition-colors" />
+        <div className="p-3 bg-slate-50 dark:bg-slate-700 rounded-lg group-hover:bg-primary-light/10 transition-colors">
+          <Icon className="w-6 h-6 text-slate-600 dark:text-slate-300 group-hover:text-primary-light transition-colors" />
         </div>
-        <h3 className="ml-4 text-xl font-bold text-slate-800">{category.title}</h3>
+        <h3 className="ml-4 text-xl font-bold text-slate-800 dark:text-slate-100">{category.title}</h3>
       </div>
       
       <div className="space-y-4 relative z-10">
         {category.skills.map((skill: SkillItem, idx) => (
           <div key={skill.name}>
             <div className="flex justify-between mb-1">
-              <span className="text-sm font-medium text-slate-700">{skill.name}</span>
+              <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{skill.name}</span>
               <span className="text-sm text-slate-400">{skill.level}%</span>
             </div>
-            <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+            <div className="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-2 overflow-hidden">
               <motion.div 
                 className="bg-primary h-2 rounded-full group-hover:bg-primary-light transition-colors duration-300"
                 initial={{ width: 0 }}

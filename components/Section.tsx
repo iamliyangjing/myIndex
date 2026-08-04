@@ -22,7 +22,7 @@ const Section: React.FC<SectionProps> = ({
     <section 
       id={id} 
       // Reduced vertical padding on mobile (py-12) vs desktop (py-16)
-      className={`py-12 md:py-16 ${lightBackground ? 'bg-slate-50' : 'bg-white'} ${className}`}
+      className={`py-12 md:py-16 ${lightBackground ? 'bg-slate-50 dark:bg-slate-900' : 'bg-white dark:bg-slate-900'} ${className}`}
     >
       {/* 
         Responsive Width Logic:
@@ -39,11 +39,11 @@ const Section: React.FC<SectionProps> = ({
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3 md:mb-4 tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-3 md:mb-4 tracking-tight">
             {title}
           </h2>
           {subtitle && (
-            <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto px-2">
+            <p className="text-base md:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto px-2">
               {subtitle}
             </p>
           )}
