@@ -3,12 +3,10 @@ import {
   Database, 
   Cloud, 
   Code, 
-  ShieldCheck,
   Sparkles,
   Zap,
   Layers,
   Search,
-  Cpu,
   Workflow
 } from "lucide-react";
 import { ExperienceItem, LearningItem, SkillCategory, BookItem, LocalizedData, ProfileData, HeroContent, FooterContent, BlogPost, SpaceContent, MapLocation, PrincipleItem } from "./types";

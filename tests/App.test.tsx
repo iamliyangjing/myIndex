@@ -11,7 +11,7 @@ describe('App', () => {
     expect(screen.getByRole('heading', { name: 'Currently Learning' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Reading List' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Tech Blog' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Space' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Travel Footprint' })).toBeInTheDocument();
   });
 
   it('toggles to Chinese and back to English', () => {
