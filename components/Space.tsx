@@ -15,12 +15,7 @@ const Space: React.FC = () => {
   const tileLayerRef = useRef<L.TileLayer | null>(null);
   const initializedRef = useRef(false);
 
-  const getTileUrl = useCallback(() => {
-    const isDark = document.documentElement.classList.contains('dark');
-    return isDark 
-      ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-      : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
-  }, []);
+  const getTileUrl = useCallback(() => 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', []);
 
   const getMarkerStyles = useCallback(() => {
     const isDark = document.documentElement.classList.contains('dark');
@@ -91,7 +86,7 @@ const Space: React.FC = () => {
       center: [34.0, 115.0],
       zoom: isMobile ? 3 : 4, // Zoom out slightly more on mobile
       zoomControl: false,
-      attributionControl: false,
+      attributionControl: true,
       scrollWheelZoom: false, // Disable scroll zoom
       dragging: !isMobile, // CRITICAL: Disable dragging on mobile to prevent scroll trapping
       tap: !isMobile, // Help with mobile touch events
@@ -102,8 +97,7 @@ const Space: React.FC = () => {
 
     // Add initial tile layer (theme-aware)
     tileLayerRef.current = L.tileLayer(getTileUrl(), {
-      attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
-      subdomains: 'abcd',
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>',
       maxZoom: 19
     }).addTo(map);
 
@@ -128,8 +122,7 @@ const Space: React.FC = () => {
       // Update tile layer
       map.removeLayer(tileLayerRef.current);
       tileLayerRef.current = L.tileLayer(getTileUrl(), {
-        attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
-        subdomains: 'abcd',
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>',
         maxZoom: 19
       }).addTo(map);
 

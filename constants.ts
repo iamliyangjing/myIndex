@@ -1,7 +1,6 @@
 import { 
   Server, 
   Database, 
-  Cloud, 
   Code, 
   Sparkles,
   Zap,
@@ -15,24 +14,24 @@ import { ExperienceItem, LearningItem, SkillCategory, BookItem, LocalizedData, P
 export const PROFILE_DATA: LocalizedData<ProfileData> = {
   en: {
     avatarUrl: "/avatar.svg",
-    name: "Cooper",
+    name: "Yangjing Li",
     university: "Southwest Petroleum University",
     gradYear: "Class of 2023",
     roles: [
-      "Senior Backend Engineer",
-      "Java/Go Hybrid Developer",
-      "AI Workflow Specialist"
+      "Java Backend Engineer",
+      "Insurance SaaS Platform Developer",
+      "AI Engineering Practitioner"
     ]
   },
   cn: {
     avatarUrl: "/avatar.svg",
-    name: "Cooper",
+    name: "李洋静",
     university: "西南石油大学",
     gradYear: "2023届",
     roles: [
-      "资深后端开发工程师",
-      "Java/Go 混合开发",
-      "AI 工作流专家"
+      "Java 后端开发工程师",
+      "保险 SaaS 业务系统研发",
+      "AI 工程化实践者"
     ]
   }
 };
@@ -40,34 +39,34 @@ export const PROFILE_DATA: LocalizedData<ProfileData> = {
 // Engineering Principles
 export const PRINCIPLES: LocalizedData<PrincipleItem[]> = {
   en: [
-    { title: "KISS Principle", description: "Simplicity is the prerequisite for reliability. Avoiding over-engineering while ensuring scalability.", icon: Zap },
-    { title: "Observe-First", description: "Design systems with full observability—logging, metrics, and tracing from day one.", icon: Search },
-    { title: "Domain Driven", description: "Aligning software architecture with business domains to handle complex logic gracefully.", icon: Layers },
-    { title: "Efficiency Loop", description: "Using AI (Cursor/MCP) to automate the mundane and focus on critical architecture.", icon: Workflow }
+    { title: "Business First", description: "Translate complex insurance workflows into clear domain models, interfaces, and reusable capabilities.", icon: Layers },
+    { title: "Measure the Outcome", description: "Use observable results to guide performance work, such as reducing BI calculation time from 120 seconds to 30 seconds.", icon: Search },
+    { title: "Build for Change", description: "Use configuration and componentized designs to make product and channel changes easier to deliver.", icon: Zap },
+    { title: "AI as Engineering", description: "Turn AI coding experiments into reviewable team workflows with explicit stages, rules, and quality checks.", icon: Workflow }
   ],
   cn: [
-    { title: "保持简单", description: "简单是可靠性的前提。在确保可扩展性的同时，坚决避免过度设计。", icon: Zap },
-    { title: "观测先行", description: "系统设计初期即植入日志、指标和链路追踪，实现全透明的可观测性。", icon: Search },
-    { title: "领域驱动", description: "将软件架构与业务领域对齐，优雅地处理复杂的业务逻辑。", icon: Layers },
-    { title: "AI 效能闭环", description: "利用 AI (Cursor/MCP) 自动化琐事，将精力集中在核心架构设计。", icon: Workflow }
+    { title: "从业务问题出发", description: "把复杂保险流程拆解为清晰的领域模型、接口和可复用能力。", icon: Layers },
+    { title: "用结果衡量优化", description: "以可验证的数据评估改进效果，例如将 BI 保费计算耗时从 120 秒降至 30 秒。", icon: Search },
+    { title: "面向变化设计", description: "通过配置化和组件化设计，降低产品及渠道变化的交付成本。", icon: Zap },
+    { title: "把 AI 融入工程流程", description: "将 AI Coding 实践沉淀为有阶段、有规范、可审查的团队工作流。", icon: Workflow }
   ]
 };
 
 // Hero Content
 export const HERO_CONTENT: LocalizedData<HeroContent> = {
   en: {
-    slogan: "Scalability Meets Intelligence",
-    role: "Senior Backend Developer",
-    subRole: "Expert in Distributed Java Systems & AI-Driven Development. 3+ years of high-performance architecture design.",
-    ctaText: "Tech Stack",
-    downloadText: "Get CV",
+    slogan: "Reliable Systems for Complex Insurance Workflows",
+    role: "Java Backend Engineer",
+    subRole: "3 years of experience building insurance SaaS systems, improving performance, and bringing AI workflows into team engineering practice.",
+    ctaText: "Core Skills",
+    downloadText: "Download Resume",
   },
   cn: {
-    slogan: "当可扩展性遇见人工智能",
-    role: "资深后端开发工程师",
-    subRole: "精通分布式 Java 系统与 AI 驱动开发。3年以上高性能架构设计实战经验。",
-    ctaText: "核心技术栈",
-    downloadText: "获取简历",
+    slogan: "让复杂保险业务更高效、更可靠",
+    role: "Java 后端开发工程师",
+    subRole: "3 年后端开发经验，聚焦保险 SaaS 系统、性能优化与 AI 工程化实践。",
+    ctaText: "核心技能",
+    downloadText: "下载简历",
   }
 };
 
@@ -75,97 +74,83 @@ export const HERO_CONTENT: LocalizedData<HeroContent> = {
 export const SKILL_CATEGORIES: LocalizedData<SkillCategory[]> = {
   en: [
     {
-      title: "Backend Core",
+      title: "Java & Backend",
       icon: Code,
       skills: [
-        { name: "Java (JUC/JVM/NIO)", level: 92 },
-        { name: "Spring Ecosystem", level: 90 },
-        { name: "Go (Gin/gRPC)", level: 75 },
-        { name: "Design Patterns", level: 88 },
+        { name: "Java Core, Concurrency & JVM" },
+        { name: "Spring / Spring Boot / Spring MVC" },
+        { name: "MyBatis-Plus" },
+        { name: "DDD & Clean Architecture" },
       ],
     },
     {
-      title: "AI & Tools",
+      title: "AI Engineering",
       icon: Sparkles,
       skills: [
-        { name: "Cursor / Trae Mastery", level: 95 },
-        { name: "MCP / RAG Pipeline", level: 85 },
-        { name: "Prompt Engineering", level: 90 },
+        { name: "AI Coding & SDD Workflows" },
+        { name: "OpenSpec & Agent-assisted Delivery" },
+        { name: "Agent Tool Use & Workflow Orchestration" },
+        { name: "RAG, Hybrid Retrieval & Knowledge Q&A" },
       ],
     },
     {
-      title: "Distributed Middleware",
+      title: "Data & Messaging",
       icon: Server,
       skills: [
-        { name: "Redis / Kafka / RocketMQ", level: 85 },
-        { name: "Zookeeper / Sentinel", level: 80 },
-        { name: "DDD / Microservices", level: 85 },
+        { name: "MySQL: Indexes, Transactions & SQL Tuning" },
+        { name: "Redis: Cache Design & Distributed Locks" },
+        { name: "RabbitMQ & Kafka" },
+        { name: "Elasticsearch: Mapping & Search Optimization" },
       ],
     },
     {
-      title: "Data & Storage",
+      title: "Delivery & Operations",
       icon: Database,
       skills: [
-        { name: "MySQL (Perf Tuning)", level: 90 },
-        { name: "Elasticsearch", level: 82 },
-        { name: "PostgreSQL", level: 75 },
-      ],
-    },
-    {
-      title: "Cloud Native",
-      icon: Cloud,
-      skills: [
-        { name: "Docker / K8s", level: 80 },
-        { name: "CI/CD (Jenkins/GHA)", level: 82 },
-        { name: "Linux / Shell", level: 85 },
+        { name: "Linux, Docker & Nginx" },
+        { name: "Jenkins, Gradle & Liquibase" },
+        { name: "Shell Scripting" },
       ],
     },
   ],
   cn: [
     {
-      title: "后端核心",
+      title: "Java 与后端开发",
       icon: Code,
       skills: [
-        { name: "Java (JUC/JVM/NIO)", level: 92 },
-        { name: "Spring 生态系统", level: 90 },
-        { name: "Go (Gin/gRPC)", level: 75 },
-        { name: "经典设计模式", level: 88 },
+        { name: "Java 基础、并发编程与 JVM" },
+        { name: "Spring / Spring Boot / Spring MVC" },
+        { name: "MyBatis-Plus" },
+        { name: "DDD 与整洁架构" },
       ],
     },
     {
-      title: "AI 与 效能工具",
+      title: "AI 工程化",
       icon: Sparkles,
       skills: [
-        { name: "Cursor / Trae 深度应用", level: 95 },
-        { name: "MCP / RAG 管道构建", level: 85 },
-        { name: "提示词工程", level: 90 },
+        { name: "AI Coding 与 SDD 工作流" },
+        { name: "OpenSpec 与 Agent 辅助交付" },
+        { name: "Agent 工具调用与工作流编排" },
+        { name: "RAG、混合检索与知识问答" },
       ],
     },
     {
-      title: "分布式中间件",
+      title: "数据与消息中间件",
       icon: Server,
       skills: [
-        { name: "Redis / Kafka / RocketMQ", level: 85 },
-        { name: "Zookeeper / Sentinel", level: 80 },
-        { name: "DDD / 微服务架构", level: 85 },
+        { name: "MySQL：索引、事务与 SQL 优化" },
+        { name: "Redis：缓存设计与分布式锁" },
+        { name: "RabbitMQ 与 Kafka" },
+        { name: "Elasticsearch：数据建模与检索优化" },
       ],
     },
     {
-      title: "数据与存储",
+      title: "工程化与交付",
       icon: Database,
       skills: [
-        { name: "MySQL (性能调优)", level: 90 },
-        { name: "Elasticsearch", level: 82 },
-        { name: "PostgreSQL", level: 75 },
-      ],
-    },
-    {
-      title: "云原生与运维",
-      icon: Cloud,
-      skills: [
-        { name: "Docker / K8s", level: 80 },
-        { name: "CI/CD (Jenkins/GHA)", level: 82 },
-        { name: "Linux / Shell", level: 85 },
+        { name: "Linux、Docker 与 Nginx" },
+        { name: "Jenkins、Gradle 与 Liquibase" },
+        { name: "Shell 脚本" },
       ],
     },
   ]
@@ -176,71 +161,101 @@ export const EXPERIENCE_DATA: LocalizedData<ExperienceItem[]> = {
   en: [
     {
       id: "exp-1",
-      period: "2023.03 - Present",
-      role: "Backend Architect (Core Lead)",
+      period: "2023.06 - Present",
+      role: "Mid-level Backend Engineer · Project Lead · AI Engineering Group Member",
       company: "Lingbao Technology Co., Ltd.",
-      description: "Driving the insurance agency SaaS platform evolution, focusing on extreme performance and multi-tenant security.",
+      description: "Progressed from junior engineer to project lead, delivering insurance SaaS capabilities across product configuration, policy issuance, reporting, and engineering efficiency.",
       achievements: [
-        "Led Premium Calculation Engine refactor, achieving 4x performance boost (120s down to 30s) using parallel task orchestration.",
-        "Architected OpenAPI SaaS gateway, supporting 100k+ daily policy requests with 99.99% availability.",
-        "Reduced database I/O by 40% through ES-based index optimization and multi-level caching strategies.",
-        "Implemented physical data isolation for multi-tenancy, passing Tier-3 security certification."
+        "Promoted from junior engineer (2023.06–2024.06) to mid-level engineer (2024.06–present); served as STORM project lead and currently lead development for AMS.",
+        "Designed a configuration-based Agreement channel model for 40+ localized insurance products, reducing new-channel onboarding from weeks to days.",
+        "Optimized BI premium calculations with FutureTask and a thread pool, reducing complex-product processing time from 120 seconds to 30 seconds (75%).",
+        "Led D2C workflow abstraction and OpenAPI-based SaaS issuance services, shortening partner integration from weeks to days.",
+        "Optimized report generation with SQL index changes, query decomposition, and parallel data assembly to reduce database I/O wait.",
+        "Refactored form and document generation with factory, builder, and template method patterns to support configurable components.",
+        "Led a 2–3 person project group and contributed to the AI Engineering Group's adoption of a reviewable SDD workflow."
       ],
       projects: [
         {
-          name: "STORM Global Insurance",
-          description: "Distributed insurance platform serving SE Asia, processing $10M+ GWP annually.",
-          technologies: ["Spring Boot", "MySQL", "ES", "Distributed Lock"],
-          link: "#",
-        }
-      ]
+          name: "STORM Insurance Product & Channel Platform",
+          description: "Built for the Malaysia market, digitizing workflows between insurers and agents and supporting more than 40 localized insurance products.",
+          technologies: ["Spring Boot", "MySQL", "Elasticsearch", "JDK 11", "Liquibase", "Gradle", "Jenkins"],
+        },
+        {
+          name: "AI Coding Enablement & SDD Workflow",
+          description: "Helped evolve team practice from code completion and Vibe Coding to local agents and a structured SDD workflow using OpenSpec and SuperPowers. The workflow defines deliverables, review criteria, and execution stages, and is now used across the team.",
+          technologies: ["AI Coding", "OpenSpec", "SuperPowers", "Rules", "Skills", "MCP"],
+        },
+      ],
     },
     {
-      id: "exp-3",
-      period: "2022.09 - 2023.02",
-      role: "Backend Intern",
-      company: "AIA / CAT",
-      description: "Focused on user acquisition and policy purchase workflow automation.",
+      id: "proj-insureflow",
+      period: "Independent Project",
+      role: "Full-cycle Developer",
+      company: "InsureFlow",
+      description: "Designed and independently built an AI-enabled insurance operations platform spanning underwriting, claims, and customer service.",
       achievements: [
-        "Developed core purchase modules for D2C products, serving 50k+ active users.",
-        "Optimized checkout latency by 20% through front-to-back async processing."
+        "Connected policy intake, underwriting, quotation, payment and issuance, and claims into an end-to-end workflow.",
+        "Applied risk scoring and triage so low-risk cases proceed automatically, medium-risk cases receive human review, and high-risk cases are rejected.",
+        "Built bilingual customer Q&A grounded in insurance policy and claims knowledge, with cited sources.",
+        "Added role-based permissions, input/output safety checks, explicit exception messages, and model routing and caching for cost control."
       ],
-      projects: []
+      projects: [
+        {
+          name: "Insurance AI Operations Platform",
+          description: "An independent project exploring AI-assisted underwriting, claims triage, and customer support with traceable decisions and clear exception handling.",
+          technologies: ["Java 21", "Spring Boot", "Embabel Agent", "Spring Security", "Spring Data JPA", "Lucene", "DeepSeek"],
+        },
+      ],
     }
   ],
   cn: [
     {
       id: "exp-1",
-      period: "2023.03 - 至今",
-      role: "后端架构师 (核心技术负责人)",
+      period: "2023.06 - 至今",
+      role: "中级研发工程师 · 项目开发负责人 · AI 提效组成员",
       company: "领保科技股份有限公司",
-      description: "主导保险代理 SaaS 平台的架构演进，专注于极致性能优化与多租户安全体系建设。",
+      description: "从初级研发工程师成长为项目负责人，持续参与保险 SaaS 平台的产品配置、出单、报表和研发效能建设。",
       achievements: [
-        "主导保费计算引擎重构，利用并行任务编排技术，将响应时间从 120s 缩短至 30s，效率提升 300%。",
-        "设计 SaaS OpenAPI 平台网关，支撑每日 10w+ 签单请求，并实现 99.99% 的系统可用性。",
-        "通过 ES 索引调优及多级缓存策略，将数据库 I/O 压力降低了 40%。",
-        "落地多租户物理隔离方案，成功助力公司通过等保三级安全测评。",
+        "2023.06–2024.06 任初级研发工程师，2024.06 起任中级研发工程师；先后担任 STORM 项目负责人、AMS 项目开发负责人。",
+        "设计基于 Agreement 配置的渠道管理模型，支撑 40+ 款本地化保险产品，将新渠道上线周期从周级缩短至天级。",
+        "使用 FutureTask 与线程池优化 BI 保费计算，将复杂产品的计算耗时从 120 秒降至 30 秒，耗时降低 75%。",
+        "主导 D2C 核心流程抽象与 OpenAPI SaaS 出单服务建设，将合作方产品集成周期从周级缩短至天级。",
+        "重构报表生成流程，优化 SQL 索引、拆分复杂查询并并行组装数据，降低数据库 I/O 等待。",
+        "主导表单与文档生成 Output 模块重构，组合工厂、建造者和模板方法模式，实现组件化、配置化生成。",
+        "负责 2–3 人项目小组的协作推进，并参与推动团队采用可审查的 SDD 开发工作流。"
       ],
       projects: [
         {
-          name: "STORM 全球保险平台",
-          description: "面向东南亚市场的分布式保险平台，年处理保费突破千万美金级。",
-          technologies: ["Spring Boot", "MySQL", "ES", "分布式锁"],
-          link: "#",
-        }
-      ]
+          name: "STORM 跨境保险产品与渠道平台",
+          description: "面向马来西亚市场，连接保险公司与 Agent，提供全流程数字化管理，已承载 40+ 款本地化保险产品。",
+          technologies: ["Spring Boot", "MySQL", "Elasticsearch", "JDK 11", "Liquibase", "Gradle", "Jenkins"],
+        },
+        {
+          name: "AI Coding 提效与 SDD 工作流",
+          description: "推动团队从代码补全、Vibe Coding 演进到本地 Agent 与 SDD；基于 OpenSpec 和 SuperPowers 设计交付物、审查标准和执行阶段，工作流已在团队内推广使用。",
+          technologies: ["AI Coding", "OpenSpec", "SuperPowers", "Rules", "Skills", "MCP"],
+        },
+      ],
     },
     {
-      id: "exp-3",
-      period: "2022.09 - 2023.02",
-      role: "后端开发实习生",
-      company: "友邦保险咨询科技 (AIA)",
-      description: "负责 D2C 渠道的客户转化与投保自动化流程开发。",
+      id: "proj-insureflow",
+      period: "个人项目",
+      role: "独立开发（需求、架构与全流程实现）",
+      company: "InsureFlow",
+      description: "独立设计并实现 AI 保险智能运营平台，覆盖投保核保、理赔处理与客户服务场景。",
       achievements: [
-        "独立开发 D2C 产品核心购买模块，支撑了 5w+ 活跃用户的线上投保。",
-        "通过前后端异步解耦，将支付结算流程的端到端延迟降低了 20%。",
+        "打通投保受理、核保、报价、支付出单与理赔流程，实现业务闭环。",
+        "基于风险评分进行自动分流：低风险自动处理、中风险转人工审核、高风险自动拒绝。",
+        "接入保险条款与理赔指南知识库，提供带来源引用的中英双语客服问答。",
+        "实现岗位权限、输入输出安全校验、异常场景明确告知，以及模型分级调度与响应缓存。"
       ],
-      projects: []
+      projects: [
+        {
+          name: "保险智能运营平台",
+          description: "围绕 AI 核保、理赔分流和客户服务构建的个人项目，强调决策可追溯和异常处理透明。",
+          technologies: ["Java 21", "Spring Boot", "Embabel Agent", "Spring Security", "Spring Data JPA", "Lucene", "DeepSeek"],
+        },
+      ],
     }
   ]
 };
@@ -248,14 +263,14 @@ export const EXPERIENCE_DATA: LocalizedData<ExperienceItem[]> = {
 // Learning
 export const LEARNING_DATA: LocalizedData<LearningItem[]> = {
   en: [
-    { topic: "Rust for Systems", category: "Language", description: "Learning Rust to build ultra-low latency gateway components." },
-    { topic: "LLM Orchestration", category: "AI", description: "Building custom MCP servers to bridge enterprise databases and AI models." },
-    { topic: "eBPF Monitoring", category: "Observability", description: "Deep diving into kernel-level observability for performance profiling." },
+    { topic: "Specification-Driven Development", category: "Engineering", description: "Refining SDD deliverables and review criteria so agent-generated changes remain understandable and verifiable." },
+    { topic: "Agent Workflows", category: "AI", description: "Exploring tool use, task decomposition, state management, retries, and human review in business workflows." },
+    { topic: "Retrieval-Augmented Generation", category: "AI", description: "Studying document parsing, chunking, embeddings, hybrid retrieval, reranking, and grounded answers." },
   ],
   cn: [
-    { topic: "Rust 系统编程", category: "编程语言", description: "学习 Rust 用于构建极致低延迟的网关核心组件。" },
-    { topic: "大模型编排", category: "人工智能", description: "开发自定义 MCP Server，连接企业私有数据库与 AI 模型。" },
-    { topic: "eBPF 监控", category: "可观测性", description: "深入研究内核级可观测性技术，实现毫秒级的性能瓶颈洞察。" },
+    { topic: "规范驱动开发", category: "工程实践", description: "持续完善 SDD 交付物与审查标准，让 Agent 生成的改动更易理解、评估和验证。" },
+    { topic: "Agent 工作流", category: "人工智能", description: "实践工具调用、任务拆解、状态管理、失败重试与人工审核等环节。" },
+    { topic: "检索增强生成", category: "人工智能", description: "持续梳理文档解析、文本切分、Embedding、混合检索、重排与可信问答流程。" },
   ]
 };
 
@@ -352,37 +367,33 @@ export const BLOG_POSTS: LocalizedData<BlogPost[]> = {
   en: [
     {
       id: "post-1",
-      title: "Optimizing a Premium Calculation Engine for High Concurrency",
-      summary: "How to cut a 120s complex calculation down to 30s? A practical approach based on parallel orchestration and multi-level caching.",
-      date: "2024-01-10",
-      tags: ["High Performance", "Java", "Optimization"],
-      content: "# High-Concurrency Calculation Engine Optimization\n\nSharing how to optimize core business logic with async orchestration..."
+      title: "Reducing BI Premium Calculation Time from 120s to 30s",
+      summary: "A practical case study on parallelizing I/O-heavy and multi-step calculations with FutureTask and a thread pool.",
+      tags: ["Java", "Concurrency", "Performance"],
+      content: "# BI Premium Calculation Optimization\n\nComplex insurance products could take about 120 seconds to calculate, creating a timeout risk. I introduced asynchronous parallel calculation with FutureTask and a thread pool for suitable I/O-heavy and multi-step work.\n\nThe calculation time for complex products dropped from 120 seconds to 30 seconds, a 75% reduction. This improved the responsiveness of real-time premium quotations."
     },
     {
       id: "post-2",
-      title: "Boosting Backend Productivity in the AI Era",
-      summary: "From Cursor to custom MCP Servers — how I used AI to triple my daily development efficiency.",
-      date: "2024-02-15",
-      tags: ["AI", "Efficiency", "Workflow"],
-      content: "# AI-Driven Backend Development\n\nExploring how to build your own AI-assisted environment..."
+      title: "Turning AI Coding into a Reviewable Team Workflow",
+      summary: "How the team evolved from code completion and Vibe Coding toward local agents and specification-driven development.",
+      tags: ["AI Coding", "SDD", "Engineering Workflow"],
+      content: "# AI Coding as an Engineering Practice\n\nThe team evolved through code completion, Vibe Coding, and local-agent workflows. To make agent-assisted delivery easier to review and repeat, I helped introduce an SDD workflow based on OpenSpec and SuperPowers.\n\nThe workflow defines deliverable structure, quality review criteria, and execution stages. Project-specific rules, skills, and MCP tools can then extend the shared process for individual codebases. The team has adopted the workflow."
     }
   ],
   cn: [
     {
       id: "post-1",
-      title: "高并发场景下的保费计算引擎优化",
-      summary: "如何将 120s 的复杂计算优化至 30s？本文分享基于并行编排与多级缓存的实战方案。",
-      date: "2024-01-10",
-      tags: ["High Performance", "Java", "Optimization"],
-      content: "# 高并发计算引擎优化\n\n分享如何使用异步编排工具优化核心业务逻辑..."
+      title: "将 BI 保费计算从 120 秒缩短至 30 秒",
+      summary: "使用 FutureTask 与线程池并行处理 I/O 密集及多步骤计算的实践。",
+      tags: ["Java", "并发编程", "性能优化"],
+      content: "# BI 保费计算优化\n\n复杂保险产品的保费计算曾需要约 120 秒，存在超时风险。针对适合并行处理的 I/O 密集型和多步骤计算，引入 FutureTask 与线程池进行异步并发计算。\n\n复杂产品的计算耗时从 120 秒降至 30 秒，降低 75%，改善了实时保费试算的响应体验。"
     },
     {
       id: "post-2",
-      title: "AI 编程时代的后端提效之路",
-      summary: "从 Cursor 到自定义 MCP Server，我是如何利用 AI 将日常开发效率提升 3 倍的。",
-      date: "2024-02-15",
-      tags: ["AI", "Efficiency", "Workflow"],
-      content: "# AI 驱动的后端开发\n\n探讨如何构建自己的 AI 辅助环境..."
+      title: "把 AI Coding 沉淀为可审查的团队工作流",
+      summary: "团队从代码补全、Vibe Coding 逐步走向本地 Agent 和规范驱动开发的实践。",
+      tags: ["AI Coding", "SDD", "工程工作流"],
+      content: "# 将 AI Coding 纳入工程实践\n\n团队经历了代码补全、Vibe Coding 和本地 Agent 等阶段。为了让 Agent 辅助交付更容易审查和复用，我参与引入基于 OpenSpec 与 SuperPowers 的 SDD 工作流。\n\n工作流明确交付物结构、质量审查标准和执行阶段，并通过项目级 Rules、Skills 与 MCP 工具适配不同代码库。目前该工作流已在团队内推广使用。"
     }
   ]
 };
@@ -416,27 +427,24 @@ export const SPACE_DATA: LocalizedData<SpaceContent> = {
 // Footer
 export const FOOTER_CONTENT: LocalizedData<FooterContent> = {
   en: {
-    title: "Scalable systems start with clear thinking.",
-    emailText: "Connect with Cooper",
-    copyright: "© 2024 Cooper. Built for Excellence.",
-    builtWith: "React + TS + Framer + AI assistance",
+    title: "Build reliable systems. Make complex work easier.",
+    emailText: "Contact Yangjing",
+    copyright: "© 2026 Yangjing Li.",
+    builtWith: "Java · Insurance SaaS · AI Engineering",
   },
   cn: {
-    title: "清晰的思考是构建可扩展系统的开始。",
-    emailText: "联系 Cooper",
-    copyright: "© 2024 Cooper. 追求卓越极致。",
-    builtWith: "基于 React + TS + Framer + AI 协作构建",
+    title: "构建可靠系统，让复杂业务更易交付。",
+    emailText: "联系李洋静",
+    copyright: "© 2026 李洋静",
+    builtWith: "Java · 保险 SaaS · AI 工程化",
   }
 };
 
 // External Links
-export const BLOG_URL = "http://47.113.206.49/blog/";
-
-// TODO: Add your LinkedIn profile URL and resume file to complete this section.
 export const CONTACT_INFO = {
   email: "958390434@qq.com",
   github: "https://github.com/iamliyangjing",
-  linkedin: "https://www.linkedin.com/in/yourusername",
+  linkedin: "",
 };
 
-export const RESUME_URL = "";
+export const RESUME_URL = "/resume.pdf";

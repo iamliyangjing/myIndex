@@ -25,14 +25,6 @@ const Hero: React.FC = () => {
     }
   };
 
-  const handleDownloadResume = () => {
-    if (RESUME_URL) {
-      window.open(RESUME_URL, '_blank', 'noopener,noreferrer');
-    } else {
-      window.alert(t("Resume is not available yet.", "简历暂未上传，敬请期待。"));
-    }
-  };
-
   // Orbital animations config
   const orbitalIcons = [
     { icon: Coffee, color: "text-orange-500", delay: 0, radius: 200, duration: 25 },
@@ -151,13 +143,14 @@ const Hero: React.FC = () => {
                 {content.ctaText}
               </button>
               
-              <button
-                onClick={handleDownloadResume}
+              <a
+                href={RESUME_URL}
+                download="李洋静-后端开发工程师.pdf"
                 className="px-5 py-2 md:px-6 md:py-2.5 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm md:text-base border border-slate-200 dark:border-slate-700 rounded-full font-semibold shadow-sm hover:bg-slate-50 dark:hover:bg-slate-700 hover:border-slate-300 dark:hover:border-slate-600 hover:scale-105 transition-all active:scale-95 flex items-center gap-2"
               >
                 <Download className="w-4 h-4" />
                 {content.downloadText}
-              </button>
+              </a>
             </div>
 
             <div className="text-left space-y-4 print:space-y-2">

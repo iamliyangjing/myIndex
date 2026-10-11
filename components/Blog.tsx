@@ -20,10 +20,12 @@ const BlogCard: React.FC<{ post: BlogPost; onClick: () => void; index: number }>
       className="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 cursor-pointer group hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
     >
       <div className="p-6">
-        <div className="flex items-center text-sm text-slate-400 mb-3">
-          <Calendar className="w-4 h-4 mr-2" />
-          {post.date}
-        </div>
+        {post.date && (
+          <div className="flex items-center text-sm text-slate-400 mb-3">
+            <Calendar className="w-4 h-4 mr-2" />
+            {post.date}
+          </div>
+        )}
         <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">
           {post.title}
         </h3>
@@ -76,10 +78,12 @@ const BlogModal: React.FC<{ post: BlogPost; onClose: () => void }> = ({ post, on
         <div className="p-6 border-b border-slate-100 flex justify-between items-start sticky top-0 bg-white z-10">
           <div>
             <h2 className="text-2xl font-bold text-slate-900">{post.title}</h2>
-            <div className="flex items-center text-slate-500 text-sm mt-2">
-              <Calendar className="w-4 h-4 mr-2" />
-              {post.date}
-            </div>
+            {post.date && (
+              <div className="flex items-center text-slate-500 text-sm mt-2">
+                <Calendar className="w-4 h-4 mr-2" />
+                {post.date}
+              </div>
+            )}
           </div>
           <button 
             onClick={onClose}

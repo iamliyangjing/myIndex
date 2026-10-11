@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Code2, Menu, X, ExternalLink, Globe, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BLOG_URL } from '../constants';
+import { CONTACT_INFO } from '../constants';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTheme } from '../contexts/ThemeContext';
+
+type NavLink =
+  | { label: string; id: string; type: 'internal' }
+  | { label: string; url: string; type: 'external' };
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -30,12 +34,12 @@ const Navbar: React.FC = () => {
     }
   };
 
-  const navLinks = [
+  const navLinks: NavLink[] = [
     { label: t('Skills', '技术栈'), id: 'skills', type: 'internal' },
     { label: t('Experience', '工作经历'), id: 'experience', type: 'internal' },
     { label: t('Reading', '书单'), id: 'books', type: 'internal' },
     { label: t('Space', '足迹'), id: 'space', type: 'internal' },
-    { label: t('Blog', '博客'), url: BLOG_URL, type: 'external' },
+    { label: t('Blog', '博客'), id: 'blog', type: 'internal' },
   ];
 
   return (
@@ -119,7 +123,7 @@ const Navbar: React.FC = () => {
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            href="mailto:developer@example.com"
+            href={`mailto:${CONTACT_INFO.email}`}
             className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${
               isScrolled 
                 ? 'bg-slate-900 text-white hover:bg-slate-800' 
@@ -199,7 +203,7 @@ const Navbar: React.FC = () => {
               ))}
               <hr className="border-slate-100" />
                <a
-                href="mailto:developer@example.com"
+                href={`mailto:${CONTACT_INFO.email}`}
                 className="text-center w-full py-3 bg-slate-900 text-white rounded-lg font-semibold"
               >
                 {t('Contact Me', '联系我')}

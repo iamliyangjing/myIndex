@@ -2,7 +2,6 @@ import { LucideIcon } from "lucide-react";
 
 export interface SkillItem {
   name: string;
-  level: number;
 }
 
 export interface SkillCategory {
@@ -55,7 +54,7 @@ export interface BlogPost {
   id: string;
   title: string;
   summary: string;
-  date: string;
+  date?: string;
   tags: string[];
   content: string;
 }

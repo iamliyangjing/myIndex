@@ -25,23 +25,14 @@ const SkillCard: React.FC<{ category: SkillCategory; index: number }> = ({ categ
         <h3 className="ml-4 text-xl font-bold text-slate-800 dark:text-slate-100">{category.title}</h3>
       </div>
       
-      <div className="space-y-4 relative z-10">
-        {category.skills.map((skill: SkillItem, idx) => (
-          <div key={skill.name}>
-            <div className="flex justify-between mb-1">
-              <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{skill.name}</span>
-              <span className="text-sm text-slate-400">{skill.level}%</span>
-            </div>
-            <div className="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-2 overflow-hidden">
-              <motion.div 
-                className="bg-primary h-2 rounded-full group-hover:bg-primary-light transition-colors duration-300"
-                initial={{ width: 0 }}
-                whileInView={{ width: `${skill.level}%` }}
-                transition={{ duration: 1, delay: 0.5 + (idx * 0.1), ease: "easeOut" }}
-                viewport={{ once: true }}
-              />
-            </div>
-          </div>
+      <div className="flex flex-wrap gap-2 relative z-10">
+        {category.skills.map((skill: SkillItem) => (
+          <span
+            key={skill.name}
+            className="text-sm px-3 py-1.5 rounded-full bg-slate-50 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-600"
+          >
+            {skill.name}
+          </span>
         ))}
       </div>
     </motion.div>
@@ -57,8 +48,8 @@ const Skills: React.FC = () => {
       id="skills" 
       title={t("Tech Stack & Skills", "技术栈 & 核心能力")}
       subtitle={t(
-        "A comprehensive technical reserve for building high-availability, high-performance distributed systems.",
-        "构建高可用、高性能分布式系统的全面技术储备。"
+        "Core technologies and engineering practices used across backend and AI application projects.",
+        "在后端业务与 AI 应用项目中使用的核心技术与工程实践。"
       )}
       lightBackground
     >

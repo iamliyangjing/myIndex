@@ -2,15 +2,16 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# Java Backend Engineer Portfolio
+# Yangjing Li | Java Backend Engineer Portfolio
 
-A professional, responsive personal portfolio website for a Senior Java Backend Engineer. Built with React, TypeScript, Tailwind CSS (v4) and Vite.
+A responsive bilingual portfolio for a Java backend engineer with experience in insurance SaaS, performance optimization, and AI engineering workflows. Built with React, TypeScript, Tailwind CSS (v4), and Vite.
 
 ## Features
 
 - **Bilingual (EN/CN)**: Language toggle with localStorage persistence and system-language detection
 - **Dark / Light theme**: Follows system preference, overridable, persisted
-- **Sections**: Hero, Skills, Experience, Learning, Books (3D), Blog, Travel Map (Leaflet)
+- **Sections**: Profile, Skills, Engineering Principles, Experience & Projects, Learning, Books, Engineering Notes, Travel Map
+- **Resume download**: The PDF in `public/resume.pdf` is served as `/resume.pdf` and linked from the profile section.
 - **Print-optimized**: The page doubles as a printable resume
 
 ## Run Locally
@@ -37,4 +38,4 @@ The dev server starts at `http://localhost:3000`.
 
 ## Customize
 
-All site content (profile, skills, experience, books, blog posts, contact info) lives in [constants.ts](constants.ts). Replace the placeholder contact details there with your own.
+Most site content (profile, skills, experience, books, engineering notes, and contact info) lives in [constants.ts](constants.ts). Replace the PDF at `public/resume.pdf` when updating the downloadable resume.

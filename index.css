@@ -107,6 +107,9 @@
 .dark .leaflet-container {
   background: #1e293b !important;
 }
+.dark .leaflet-tile-pane {
+  filter: grayscale(0.3) invert(0.9) hue-rotate(180deg) brightness(0.85) contrast(0.9);
+}
 .custom-div-icon {
   background: transparent;
   border: none;

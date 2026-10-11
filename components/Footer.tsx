@@ -36,17 +36,19 @@ const Footer: React.FC = () => {
             <span className="text-xs md:text-sm text-slate-400 group-hover:text-white">GitHub</span>
           </a>
 
-           <a 
-            href={CONTACT_INFO.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex flex-col items-center justify-center p-3 md:p-4 rounded-xl hover:bg-slate-800 transition-colors"
-          >
-            <div className="p-3 bg-slate-800 rounded-full group-hover:bg-[#0077b5] mb-2 md:mb-3 transition-colors">
-              <Linkedin className="w-5 h-5 md:w-6 md:h-6" />
-            </div>
-            <span className="text-xs md:text-sm text-slate-400 group-hover:text-white">LinkedIn</span>
-          </a>
+          {CONTACT_INFO.linkedin && (
+            <a
+              href={CONTACT_INFO.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col items-center justify-center p-3 md:p-4 rounded-xl hover:bg-slate-800 transition-colors"
+            >
+              <div className="p-3 bg-slate-800 rounded-full group-hover:bg-[#0077b5] mb-2 md:mb-3 transition-colors">
+                <Linkedin className="w-5 h-5 md:w-6 md:h-6" />
+              </div>
+              <span className="text-xs md:text-sm text-slate-400 group-hover:text-white">LinkedIn</span>
+            </a>
+          )}
         </div>
 
         <div className="border-t border-slate-800 pt-8 text-sm text-slate-500">
